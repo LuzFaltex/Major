@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <Authors>Foxtrek_64</Authors>
+    <Company>LuzFaltex</Company>
+    <Description>An interactive bot by LuzFaltex named Major.</Description>
+  </PropertyGroup>
+
+</Project>
