@@ -1,0 +1,70 @@
+﻿using Discord.Commands;
+using Discord.WebSocket;
+using MajorInteractiveBot.Extensions;
+using MajorInteractiveBot.Models;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Threading.Tasks;
+
+namespace MajorInteractiveBot.Modules
+{
+    public class CommandHandler
+    {
+        #region properties
+        private readonly DiscordSocketClient _client;
+        private readonly CommandService _commands;
+        private readonly IServiceProvider _services;
+        // private readonly IOptions<ApplicationConfiguration> _config;
+        private readonly ApplicationConfiguration _appConfig;
+        private readonly ILogger Log;
+        #endregion
+
+        public CommandHandler(DiscordSocketClient client, CommandService commands, IServiceProvider services)
+        {
+            _client = client;
+            _commands = commands;
+            _services = services;
+            // _config = _services.GetRequiredServiceOrThrow<IOptions<ApplicationConfiguration>>();
+            _appConfig = _services.GetRequiredServiceOrThrow<ApplicationConfiguration>();
+            Log = _services.GetRequiredServiceOrThrow<ILogger<CommandHandler>>();
+
+            _client.MessageReceived += MessageReceived;
+        }
+
+        private async Task MessageReceived(SocketMessage rawMessage)
+        {
+            // Ignore actions from bots
+            if (!(rawMessage is SocketUserMessage message)) return;
+
+            // Create a number to track where the prefix ends and the command begins
+            int argPos = 0;
+
+            // Create command context
+            var context = new SocketCommandContext(_client, message);
+            var guildConfig = _appConfig.GuildConfigurations[context.Guild.Id];
+
+            if (message.HasStringPrefix(guildConfig.CommandPrefix, ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))
+            {
+                // Execute command
+                Log.LogDebug("{Username} ran command '{Command}' in Guild {Guild}", context.User.UsernameAndDiscrim(), context.Message, context.Guild.Name);
+                var result = await _commands.ExecuteAsync(context, argPos, _services);
+
+                if (!result.IsSuccess)
+                {
+                    switch (result.Error)
+                    {
+                        case CommandError.BadArgCount:
+                        case CommandError.Exception:
+                        case CommandError.ObjectNotFound:
+                        case CommandError.ParseFailed:
+                        case CommandError.UnmetPrecondition:
+                        case CommandError.Unsuccessful:
+                            await context.Channel.SendMessageAsync(result.ErrorReason);
+                            Log.LogCritical(result.ErrorReason);
+                            break;
+                    }
+                }
+            }
+        }
+    }
+}
