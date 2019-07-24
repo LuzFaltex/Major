@@ -1,7 +1,6 @@
 ﻿using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using MajorInteractiveBot.Configuration;
 using MajorInteractiveBot.Extensions;
 using MajorInteractiveBot.Models;
 using Microsoft.Extensions.Configuration;
@@ -23,24 +22,20 @@ namespace MajorInteractiveBot
         private readonly DiscordSocketClient _client;
         private readonly CommandService _commands;
         private readonly IServiceProvider _provider;
-        // private readonly IConfiguration _config;
-        private readonly ApplicationConfiguration _appConfig;
         private readonly IApplicationLifetime _applicationLifetime;
         private readonly DiscordSerilogAdapter _serilogAdapter;
         private IServiceScope _scope;
         private readonly ILogger<MajorBot> Log;
 
-        public MajorBot(IServiceProvider services, IApplicationLifetime applicationLifetime)
+        public MajorBot(IServiceProvider services)
         {
             _provider = services;
 
-            _client = _provider.GetRequiredServiceOrThrow<DiscordSocketClient>();
-            _commands = _provider.GetRequiredServiceOrThrow<CommandService>();
-            // _config = _provider.GetRequiredServiceOrThrow<IConfiguration>();
-            _appConfig = _provider.GetRequiredServiceOrThrow<ApplicationConfiguration>();
-            _applicationLifetime = applicationLifetime;
-            _serilogAdapter = new DiscordSerilogAdapter(_provider.GetRequiredServiceOrThrow<ILogger<DiscordSerilogAdapter>>());
-            Log = _provider.GetRequiredServiceOrThrow<ILogger<MajorBot>>();
+            _client = _provider.GetRequiredService<DiscordSocketClient>();
+            _commands = _provider.GetRequiredService<CommandService>();
+            _applicationLifetime = _provider.GetRequiredService<IApplicationLifetime>();
+            _serilogAdapter = new DiscordSerilogAdapter(_provider.GetRequiredService<ILogger<DiscordSerilogAdapter>>());
+            Log = _provider.GetRequiredService<ILogger<MajorBot>>();
         }
 
         /// <inheritdoc />
@@ -114,8 +109,6 @@ namespace MajorInteractiveBot
             {
                 Log.LogInformation("Stopping bot service.");
 
-                ConfigurationManager.WriteConfig(_appConfig);
-
                 _client.Disconnected -= OnDisconnect;
 
                 _client.Log -= _serilogAdapter.HandleLog;
@@ -123,8 +116,10 @@ namespace MajorInteractiveBot
             }
         }
 
+        
         private async Task UserJoined(SocketGuildUser user)
         {
+            /*
             var guild = _appConfig.GuildConfigurations[user.Guild.Id];
             var channelId = guild.GreetingChannel;
 
@@ -133,16 +128,19 @@ namespace MajorInteractiveBot
             var channel = user.Guild.GetTextChannel(channelId);
 
             await channel.SendMessageAsync(guild.GreetingMessage);            
+            */
         }
 
         private async Task JoinedGuild(SocketGuild guild)
         {
+            /*
             var guildConfig = new GuildConfiguration(guild);
             // var appConfig = _provider.GetRequiredService<IOptions<ApplicationConfiguration>>().Value;
             var appConfig = _provider.GetRequiredService<ApplicationConfiguration>();
             appConfig.GuildConfigurations.Add(guild.Id, guildConfig);
 
             await ConfigurationManager.WriteConfig(appConfig);
+            */
         }
 
         private Task OnDisconnect(Exception ex)

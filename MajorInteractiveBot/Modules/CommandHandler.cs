@@ -1,7 +1,7 @@
 ﻿using Discord.Commands;
 using Discord.WebSocket;
 using MajorInteractiveBot.Extensions;
-using MajorInteractiveBot.Models;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
@@ -15,18 +15,18 @@ namespace MajorInteractiveBot.Modules
         private readonly CommandService _commands;
         private readonly IServiceProvider _services;
         // private readonly IOptions<ApplicationConfiguration> _config;
-        private readonly ApplicationConfiguration _appConfig;
+        // private readonly ApplicationConfiguration _appConfig;
         private readonly ILogger Log;
         #endregion
 
-        public CommandHandler(DiscordSocketClient client, CommandService commands, IServiceProvider services)
+        public CommandHandler(IServiceProvider services)
         {
-            _client = client;
-            _commands = commands;
+            _client = services.GetRequiredService<DiscordSocketClient>();
+            _commands = services.GetRequiredService<CommandService>();
             _services = services;
             // _config = _services.GetRequiredServiceOrThrow<IOptions<ApplicationConfiguration>>();
-            _appConfig = _services.GetRequiredServiceOrThrow<ApplicationConfiguration>();
-            Log = _services.GetRequiredServiceOrThrow<ILogger<CommandHandler>>();
+            // _appConfig = _services.GetRequiredServiceOrThrow<ApplicationConfiguration>();
+            Log = _services.GetRequiredService<ILogger<CommandHandler>>();
 
             _client.MessageReceived += MessageReceived;
         }

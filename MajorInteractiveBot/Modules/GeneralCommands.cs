@@ -1,25 +1,21 @@
 ﻿using Discord.Commands;
-using MajorInteractiveBot.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Discord.WebSocket;
 using System.Threading.Tasks;
 
 namespace MajorInteractiveBot.Modules
 {
     public class GeneralCommands : ModuleBase
     {
-        private readonly ApplicationConfiguration _appConfig;
+        private readonly DiscordSocketClient _discordClient;
 
-        public GeneralCommands(ApplicationConfiguration appConfig)
+        public GeneralCommands(DiscordSocketClient discordClient)
         {
-            _appConfig = appConfig;
+            _discordClient = discordClient;
         }
 
         [Command("ping")]
-        public async Task SayHello()
-        {
-            await ReplyAsync($"Hello World! You're from {Context.Guild.Name}.");
-        }
+        [Summary("Ping MODiX to determine connectivity and latency")]
+        public Task Ping()
+            => ReplyAsync($"Pong! ({_discordClient.Latency} ms)");
     }
 }
