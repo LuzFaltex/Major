@@ -1,7 +1,10 @@
 ﻿using Discord.Commands;
 using Discord.WebSocket;
+using MajorInteractiveBot.Data;
+using MajorInteractiveBot.Data.Models;
 using MajorInteractiveBot.Modules;
 using MajorInteractiveBot.Services.CommandHelp;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,7 +30,7 @@ namespace MajorInteractiveBot
 
                     if (ctx.HostingEnvironment.IsDevelopment())
                     {
-                        builder.AddUserSecrets("5B9EACD8-A154-40EB-B406-6D62DF2C6AB1");
+                        builder.AddUserSecrets<MajorBot>();
                     }
                 })
                 .ConfigureLogging(builder =>
@@ -42,6 +45,11 @@ namespace MajorInteractiveBot
                 .ConfigureServices((context, services) =>
                 {
                     var serviceCollection = new ServiceCollection()
+                        .Configure<MajorConfig>(context.Configuration)
+                        .AddDbContext<MajorContext>(options =>
+                        {
+                            options.UseSqlite(context.Configuration.GetValue<string>(nameof(MajorConfig.DbConnection)));
+                        })
                         .AddSingleton<DiscordSocketClient>()
                         .AddSingleton<CommandService>()
                         .AddSingleton<CommandHandler>()

@@ -1,7 +1,8 @@
 {
   "profiles": {
     "MajorInteractiveBot": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\Foxtrek_64\\Documents\\Projects\\LuzFaltex\\MajorInteractiveBot\\MajorInteractiveBot"
     }
   }
 }

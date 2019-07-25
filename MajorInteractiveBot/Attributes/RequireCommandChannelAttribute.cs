@@ -1,6 +1,8 @@
 ﻿using Discord.Commands;
-using MajorInteractiveBot.Models;
+using MajorInteractiveBot.Data;
+using MajorInteractiveBot.Data.Models;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,15 +34,17 @@ namespace MajorInteractiveBot.Attributes
 
         public override Task<PreconditionResult> CheckPermissionsAsync(ICommandContext context, CommandInfo command, IServiceProvider services)
         {
-            var appConfig = services.GetRequiredService<ApplicationConfiguration>();
+            var config = services.GetRequiredService<MajorContext>();
 
             if (IncludeConfigValues)
             {
-                var tempCollection = appConfig.GuildConfigurations[context.Guild.Id].CommandChannels;
+                var tempCollection = config.CommandChannels.Where(x => x.GuildId == context.Guild.Id).Select(x => x.ChannelId);
                 AllowedChannels.AddRange(tempCollection);
             }
 
-            if (context.User.Id == appConfig.BotOwner || AllowedChannels.Count == 0 || AllowedChannels.Any(x => x == context.Channel.Id))
+            var botOwner = services.GetRequiredService<IOptions<MajorConfig>>().Value.BotOwner;
+
+            if (context.User.Id == botOwner || context.User.Id == context.Guild.OwnerId || AllowedChannels.Count == 0 || AllowedChannels.Any(x => x == context.Channel.Id))
             {
                 return Task.FromResult(PreconditionResult.FromSuccess());
             }

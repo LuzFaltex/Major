@@ -1,11 +1,12 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace MajorInteractiveBot.Models
+namespace MajorInteractiveBot.Data.Models
 {
-    public class ApplicationConfiguration
+    public class MajorConfig
     {
+        public string DiscordToken { get; set; }
+        public string DbConnection { get; set; }
         public LogLevel LogLevel { get; set; } = LogLevel.Information;
         public ulong BotOwner { get; set; } = 197291773133979648;
-        public string SqlLiteDBPath { get; set; }
     }
 }

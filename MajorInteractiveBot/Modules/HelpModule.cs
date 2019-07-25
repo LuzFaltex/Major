@@ -1,7 +1,7 @@
 ﻿using Discord;
 using Discord.Commands;
 using Discord.Net;
-using MajorInteractiveBot.Models;
+using MajorInteractiveBot.Data;
 using MajorInteractiveBot.Services.CommandHelp;
 using System;
 using System.Collections.Generic;
@@ -16,9 +16,9 @@ namespace MajorInteractiveBot.Modules
     public sealed class HelpModule : ModuleBase
     {
         private readonly ICommandHelpService _commandHelpService;
-        private readonly ApplicationConfiguration _config;
+        private readonly MajorContext _config;
 
-        public HelpModule(ICommandHelpService commandHelpService, ApplicationConfiguration config)
+        public HelpModule(ICommandHelpService commandHelpService, MajorContext config)
         {
             _commandHelpService = commandHelpService;
             _config = config;
@@ -27,10 +27,10 @@ namespace MajorInteractiveBot.Modules
         [Command("help"), Summary("Prints a neat list of all commands.")]
         public async Task HelpAsync()
         {
-            var guildConfig = _config.GuildConfigurations[Context.Guild.Id];
+            // var guildConfig = _config.GuildConfigurations[Context.Guild.Id];
             var modules = _commandHelpService.GetModuleHelpData()
                 .Select(d => d.Name)
-                .Where(x => guildConfig.IsModuleEnabled(x))
+                // .Where(x => guildConfig.IsModuleEnabled(x))
                 .OrderBy(d => d);
 
             var descriptionBuilder = new StringBuilder()
@@ -38,8 +38,8 @@ namespace MajorInteractiveBot.Modules
                 .AppendJoin(", ", modules)
                 .AppendLine()
                 .AppendLine()
-                .AppendLine($"Do `{guildConfig.CommandPrefix}help dm` to have everything DMed to you. (Spammy!)")
-                .AppendLine($"Do `{guildConfig.CommandPrefix}help [module name]` to have that module's commands listed.");
+                .AppendLine($"Do `.help dm` to have everything DMed to you. (Spammy!)")
+                .AppendLine($"Do `.help [module name]` to have that module's commands listed.");
 
             var embed = new EmbedBuilder()
                 .WithTitle("Help")
@@ -79,7 +79,7 @@ namespace MajorInteractiveBot.Modules
             [Summary("The module name or related query to use to search for the help module.")]
             string query)
         {
-            var guildConfig = _config.GuildConfigurations[Context.Guild.Id];
+            
             var foundModule = _commandHelpService.GetModuleHelpData(query);
 
             if (foundModule is null)
@@ -88,11 +88,12 @@ namespace MajorInteractiveBot.Modules
                 return;
             }
 
-            if (!guildConfig.IsModuleEnabled(foundModule.Name))
+            var module = _config.Modules.FirstOrDefault(x => x.ModuleName == foundModule.Name && x.GuildId == Context.Guild.Id);
+            if (!module.Enabled)
             {
                 await ReplyAsync($"Sorry, the selected module is disabled. If you believe this to be in error, please contact an administrator.");
             }
-
+            
             var embed = GetEmbedForModule(foundModule);
 
             await ReplyAsync($"Results for `{query}`:", embed: embed.Build());
@@ -109,7 +110,9 @@ namespace MajorInteractiveBot.Modules
 
         private EmbedBuilder AddCommandFields(EmbedBuilder embedBuilder, IEnumerable<CommandHelpData> commands)
         {
-            var guildConfig = _config.GuildConfigurations[Context.Guild.Id];
+
+            var guildConfig = _config.Guilds.Find(Context.Guild.Id);
+
             foreach (var command in commands)
             {
                 var summaryBuilder = new StringBuilder(command.Summary ?? "No Summary.").AppendLine();
@@ -119,7 +122,7 @@ namespace MajorInteractiveBot.Modules
                     .WithName($"Command: {guildConfig.CommandPrefix}{command.Aliases.FirstOrDefault()} {GetParams(command)}")
                     .WithValue(summary.ToString()));
             }
-
+            
             return embedBuilder;
         }
 

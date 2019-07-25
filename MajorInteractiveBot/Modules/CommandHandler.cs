@@ -1,5 +1,7 @@
-﻿using Discord.Commands;
+﻿using Discord;
+using Discord.Commands;
 using Discord.WebSocket;
+using MajorInteractiveBot.Data;
 using MajorInteractiveBot.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -14,18 +16,17 @@ namespace MajorInteractiveBot.Modules
         private readonly DiscordSocketClient _client;
         private readonly CommandService _commands;
         private readonly IServiceProvider _services;
-        // private readonly IOptions<ApplicationConfiguration> _config;
-        // private readonly ApplicationConfiguration _appConfig;
+        private readonly MajorContext _config;
         private readonly ILogger Log;
         #endregion
 
-        public CommandHandler(IServiceProvider services)
+        public CommandHandler(IServiceProvider services, MajorContext config)
         {
-            _client = services.GetRequiredService<DiscordSocketClient>();
-            _commands = services.GetRequiredService<CommandService>();
             _services = services;
-            // _config = _services.GetRequiredServiceOrThrow<IOptions<ApplicationConfiguration>>();
-            // _appConfig = _services.GetRequiredServiceOrThrow<ApplicationConfiguration>();
+            _config = config;
+
+            _client = _services.GetRequiredService<DiscordSocketClient>();
+            _commands = _services.GetRequiredService<CommandService>();
             Log = _services.GetRequiredService<ILogger<CommandHandler>>();
 
             _client.MessageReceived += MessageReceived;
@@ -41,9 +42,10 @@ namespace MajorInteractiveBot.Modules
 
             // Create command context
             var context = new SocketCommandContext(_client, message);
-            var guildConfig = _appConfig.GuildConfigurations[context.Guild.Id];
+            var guild = await _config.Guilds.FindAsync(context.Guild.Id);
+            var prefix = guild?.CommandPrefix ?? ".";
 
-            if (message.HasStringPrefix(guildConfig.CommandPrefix, ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))
+            if (message.HasStringPrefix(prefix, ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))
             {
                 // Execute command
                 Log.LogDebug("{Username} ran command '{Command}' in Guild {Guild}", context.User.UsernameAndDiscrim(), context.Message, context.Guild.Name);
@@ -53,7 +55,6 @@ namespace MajorInteractiveBot.Modules
                 {
                     switch (result.Error)
                     {
-                        case CommandError.BadArgCount:
                         case CommandError.Exception:
                         case CommandError.ObjectNotFound:
                         case CommandError.ParseFailed:
@@ -61,6 +62,11 @@ namespace MajorInteractiveBot.Modules
                         case CommandError.Unsuccessful:
                             await context.Channel.SendMessageAsync(result.ErrorReason);
                             Log.LogCritical(result.ErrorReason);
+                            break;
+                        case CommandError.BadArgCount:
+                        case CommandError.UnknownCommand:
+                            await message.AddReactionAsync(new Emoji("⚠"));
+                            Log.LogDebug(result.ErrorReason);
                             break;
                     }
                 }

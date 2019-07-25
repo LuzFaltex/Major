@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,6 +8,8 @@
     <Description>An interactive bot by LuzFaltex named Major.</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Version>0.1.0</Version>
+    <LangVersion>latest</LangVersion>
+    <UserSecretsId>02c91c67-6c7b-4b8e-a0a5-a74911b3a240</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -38,6 +40,11 @@
 
   <ItemGroup>
     <Folder Include="Configuration\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MajorInteractiveBot.Data\MajorInteractiveBot.Data.csproj" />
   </ItemGroup>
 
 </Project>
