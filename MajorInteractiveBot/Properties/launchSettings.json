@@ -4,7 +4,7 @@
       "commandName": "Project",
       "workingDirectory": "C:\\Users\\Foxtrek_64\\Documents\\Projects\\LuzFaltex\\MajorInteractiveBot\\MajorInteractiveBot",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ENVIRONMENT": "Development"
       }
     }
   }

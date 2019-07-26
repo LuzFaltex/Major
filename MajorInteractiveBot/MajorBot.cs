@@ -4,6 +4,7 @@ using Discord.WebSocket;
 using MajorInteractiveBot.Data;
 using MajorInteractiveBot.Data.Models;
 using MajorInteractiveBot.Extensions;
+using MajorInteractiveBot.Modules;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,6 +31,7 @@ namespace MajorInteractiveBot
         private readonly ILogger<MajorBot> Log;
         private readonly MajorContext _context;
         private readonly MajorConfig _applicationConfig;
+        private readonly CommandHandler _commandHandler;
 
         public MajorBot(IServiceProvider services, MajorContext context)
         {
@@ -42,6 +44,8 @@ namespace MajorInteractiveBot
             _applicationLifetime = _provider.GetRequiredService<IApplicationLifetime>();
             _serilogAdapter = new DiscordSerilogAdapter(_provider.GetRequiredService<ILogger<DiscordSerilogAdapter>>());
             Log = _provider.GetRequiredService<ILogger<MajorBot>>();
+
+            _commandHandler = _provider.GetRequiredService<CommandHandler>();
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -233,7 +237,7 @@ namespace MajorInteractiveBot
             {
                 _client.Ready += OnClientReady;
 
-                cancellationToken.ThrowIfCancellationRequested();
+                // cancellationToken.ThrowIfCancellationRequested();
 
                 // await _client.LoginAsync(TokenType.Bot, _context["DiscordToken"]);
                 await _client.LoginAsync(TokenType.Bot, _applicationConfig.DiscordToken);

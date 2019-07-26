@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 
 namespace MajorInteractiveBot.Modules
 {
-    public class GeneralCommands : ModuleBase
+    public class GeneralModule : ModuleBase
     {
         private readonly DiscordSocketClient _discordClient;
 
-        public GeneralCommands(DiscordSocketClient discordClient)
+        public GeneralModule(DiscordSocketClient discordClient)
         {
             _discordClient = discordClient;
         }

@@ -24,7 +24,7 @@ namespace MajorInteractiveBot.Modules
             _config = config;
         }
 
-        [Command("help"), Summary("Prints a neat list of all commands.")]
+        [Command("help"), Summary("Prints a neat list of all commands."), Alias()]
         public async Task HelpAsync()
         {
             // var guildConfig = _config.GuildConfigurations[Context.Guild.Id];
@@ -50,6 +50,7 @@ namespace MajorInteractiveBot.Modules
 
         [Command("help dm")]
         [Summary("Spams the user's DMs with a list of every command available.")]
+        [Alias()]
         public async Task HelpDMAsync()
         {
             var userDM = await Context.User.GetOrCreateDMChannelAsync();
@@ -74,6 +75,7 @@ namespace MajorInteractiveBot.Modules
         [Command("help")]
         [Summary("Prints a neat list of all commands based on the supplied query.")]
         [Priority(-10)]
+        [Alias()]
         public async Task HelpAsync(
             [Remainder]
             [Summary("The module name or related query to use to search for the help module.")]

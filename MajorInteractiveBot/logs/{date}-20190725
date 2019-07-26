@@ -1,0 +1,142 @@
+2019-07-25 23:04:15.721 -05:00 [Information] Starting bot...
+2019-07-25 23:04:15.995 -05:00 [Information] Starting behaviors.
+2019-07-25 23:04:15.999 -05:00 [Information] Loading command modules.
+2019-07-25 23:04:16.209 -05:00 [Information] 3 modules loaded, containing 6 commands
+2019-07-25 23:04:16.222 -05:00 [Information] Logging into Discord and starting the client.
+2019-07-25 23:04:16.266 -05:00 [Information] 23:04:16 Discord     Discord.Net v2.1.1 (API v6)
+2019-07-25 23:04:20.239 -05:00 [Information] Discord client started successfully.
+2019-07-25 23:04:20.270 -05:00 [Information] 23:04:20 Gateway     Connecting
+2019-07-25 23:04:22.342 -05:00 [Information] 23:04:22 Gateway     Connected
+2019-07-25 23:04:22.776 -05:00 [Information] 23:04:22 Gateway     Ready
+2019-07-25 23:04:58.898 -05:00 [Information] Stopping bot service.
+2019-07-25 23:06:09.528 -05:00 [Information] Starting bot...
+2019-07-25 23:06:13.566 -05:00 [Information] Starting behaviors.
+2019-07-25 23:06:13.568 -05:00 [Information] Loading command modules.
+2019-07-25 23:06:13.659 -05:00 [Information] 3 modules loaded, containing 6 commands
+2019-07-25 23:06:13.672 -05:00 [Information] Logging into Discord and starting the client.
+2019-07-25 23:06:13.701 -05:00 [Information] 23:06:13 Discord     Discord.Net v2.1.1 (API v6)
+2019-07-25 23:06:14.773 -05:00 [Information] Discord client started successfully.
+2019-07-25 23:06:14.793 -05:00 [Information] 23:06:14 Gateway     Connecting
+2019-07-25 23:06:16.616 -05:00 [Information] 23:06:16 Gateway     Connected
+2019-07-25 23:06:17.075 -05:00 [Information] 23:06:17 Gateway     Ready
+2019-07-25 23:06:18.788 -05:00 [Information] Stopping bot service.
+2019-07-25 23:07:59.811 -05:00 [Information] Starting bot...
+2019-07-25 23:08:17.676 -05:00 [Information] Starting behaviors.
+2019-07-25 23:08:17.677 -05:00 [Information] Loading command modules.
+2019-07-25 23:08:17.773 -05:00 [Information] 3 modules loaded, containing 6 commands
+2019-07-25 23:08:17.784 -05:00 [Information] Logging into Discord and starting the client.
+2019-07-25 23:08:17.808 -05:00 [Information] 23:08:17 Discord     Discord.Net v2.1.1 (API v6)
+2019-07-25 23:08:18.846 -05:00 [Information] Discord client started successfully.
+2019-07-25 23:08:18.867 -05:00 [Information] 23:08:18 Gateway     Connecting
+2019-07-25 23:08:19.932 -05:00 [Information] 23:08:19 Gateway     Connected
+2019-07-25 23:08:20.355 -05:00 [Information] 23:08:20 Gateway     Ready
+2019-07-25 23:10:44.772 -05:00 [Information] Starting bot...
+2019-07-25 23:10:44.975 -05:00 [Information] Starting behaviors.
+2019-07-25 23:10:44.978 -05:00 [Information] Loading command modules.
+2019-07-25 23:10:45.100 -05:00 [Information] 3 modules loaded, containing 6 commands
+2019-07-25 23:10:45.133 -05:00 [Information] Logging into Discord and starting the client.
+2019-07-25 23:10:45.185 -05:00 [Information] 23:10:45 Discord     Discord.Net v2.1.1 (API v6)
+2019-07-25 23:10:46.458 -05:00 [Information] Discord client started successfully.
+2019-07-25 23:10:46.484 -05:00 [Information] 23:10:46 Gateway     Connecting
+2019-07-25 23:10:47.486 -05:00 [Information] 23:10:47 Gateway     Connected
+2019-07-25 23:10:47.957 -05:00 [Information] 23:10:47 Gateway     Ready
+2019-07-25 23:11:16.247 -05:00 [Information] Entity Framework Core "2.2.6-servicing-10079" initialized '"MajorContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None"
+2019-07-25 23:11:20.950 -05:00 [Warning] 23:11:20 Gateway     A MessageReceived handler is blocking the gateway task.
+2019-07-25 23:11:21.987 -05:00 [Information] Executed DbCommand ("37"ms) [Parameters=["@__get_Item_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT e.\"GuildId\", e.\"CommandPrefix\", e.\"GreetUser\", e.\"GreetingChannel\", e.\"GreetingMessage\"
+FROM \"Guilds\" AS e
+WHERE e.\"GuildId\" = @__get_Item_0
+LIMIT 1"
+2019-07-25 23:15:51.211 -05:00 [Information] Starting bot...
+2019-07-25 23:15:51.387 -05:00 [Information] Starting behaviors.
+2019-07-25 23:15:51.390 -05:00 [Information] Loading command modules.
+2019-07-25 23:15:51.513 -05:00 [Information] 3 modules loaded, containing 6 commands
+2019-07-25 23:15:51.540 -05:00 [Information] Logging into Discord and starting the client.
+2019-07-25 23:15:51.587 -05:00 [Information] 23:15:51 Discord     Discord.Net v2.1.1 (API v6)
+2019-07-25 23:15:53.042 -05:00 [Information] Discord client started successfully.
+2019-07-25 23:15:53.063 -05:00 [Information] 23:15:53 Gateway     Connecting
+2019-07-25 23:15:55.223 -05:00 [Information] 23:15:55 Gateway     Connected
+2019-07-25 23:15:55.223 -05:00 [Information] 23:15:55 Gateway     Ready
+2019-07-25 23:16:47.114 -05:00 [Information] 23:16:47 Gateway     Joined MODiX Demo
+2019-07-25 23:16:48.867 -05:00 [Information] Entity Framework Core "2.2.6-servicing-10079" initialized '"MajorContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None"
+2019-07-25 23:16:50.115 -05:00 [Warning] 23:16:50 Gateway     A JoinedGuild handler is blocking the gateway task.
+2019-07-25 23:16:50.492 -05:00 [Information] Executed DbCommand ("44"ms) [Parameters=["@p0='?' (DbType = Decimal), @p1='?', @p2='?' (DbType = Boolean), @p3='?' (DbType = Decimal), @p4='?', @p5='?' (DbType = Decimal), @p6='?', @p7='?' (DbType = Boolean), @p8='?' (DbType = Decimal), @p9='?', @p10='?' (DbType = Boolean), @p11='?' (DbType = Decimal), @p12='?', @p13='?' (DbType = Boolean)"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO \"Guilds\" (\"GuildId\", \"CommandPrefix\", \"GreetUser\", \"GreetingChannel\", \"GreetingMessage\")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+INSERT INTO \"Modules\" (\"GuildId\", \"ModuleName\", \"Enabled\")
+VALUES (@p5, @p6, @p7);
+INSERT INTO \"Modules\" (\"GuildId\", \"ModuleName\", \"Enabled\")
+VALUES (@p8, @p9, @p10);
+INSERT INTO \"Modules\" (\"GuildId\", \"ModuleName\", \"Enabled\")
+VALUES (@p11, @p12, @p13);"
+2019-07-25 23:17:03.734 -05:00 [Error] An exception bubbled up: 
+Discord.Commands.CommandException: Error occurred executing "help" for Foxtrek_64#3858 in MODiX Demo/general. ---> System.ArgumentOutOfRangeException: Length cannot be less than zero.
+Parameter name: length
+   at System.String.Substring(Int32 startIndex, Int32 length)
+   at MajorInteractiveBot.Services.CommandHelp.ModuleHelpData.FromModuleInfo(ModuleInfo module) in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Services\CommandHelp\ModuleHelpData.cs:line 24
+   at MajorInteractiveBot.Services.CommandHelp.CommandHelpService.<>c.<GetModuleHelpData>b__3_2(ModuleInfo x) in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Services\CommandHelp\CommandHelpService.cs:line 49
+   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at MajorInteractiveBot.Services.CommandHelp.CommandHelpService.<GetModuleHelpData>b__3_0() in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Services\CommandHelp\CommandHelpService.cs:line 47
+   at System.Threading.LazyInitializer.EnsureInitializedCore[T](T& target, Func`1 valueFactory)
+   at MajorInteractiveBot.Services.CommandHelp.CommandHelpService.GetModuleHelpData() in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Services\CommandHelp\CommandHelpService.cs:line 46
+   at MajorInteractiveBot.Modules.HelpModule.HelpAsync() in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Modules\HelpModule.cs:line 31
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_0.<<BuildCommand>g__ExecuteCallback|0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Discord.Commands.CommandInfo.ExecuteInternalAsync(ICommandContext context, Object[] args, IServiceProvider services)
+   --- End of inner exception stack trace ---
+2019-07-25 23:17:04.155 -05:00 [Fatal] Length cannot be less than zero.
+Parameter name: length
+2019-07-25 23:18:12.631 -05:00 [Error] An exception bubbled up: 
+Discord.Commands.CommandException: Error occurred executing "help" for Foxtrek_64#3858 in MODiX Demo/general. ---> System.ArgumentOutOfRangeException: Length cannot be less than zero.
+Parameter name: length
+   at System.String.Substring(Int32 startIndex, Int32 length)
+   at MajorInteractiveBot.Services.CommandHelp.ModuleHelpData.FromModuleInfo(ModuleInfo module) in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Services\CommandHelp\ModuleHelpData.cs:line 24
+   at MajorInteractiveBot.Services.CommandHelp.CommandHelpService.<>c.<GetModuleHelpData>b__3_2(ModuleInfo x) in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Services\CommandHelp\CommandHelpService.cs:line 49
+   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at MajorInteractiveBot.Services.CommandHelp.CommandHelpService.<GetModuleHelpData>b__3_0() in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Services\CommandHelp\CommandHelpService.cs:line 47
+   at System.Threading.LazyInitializer.EnsureInitializedCore[T](T& target, Func`1 valueFactory)
+   at MajorInteractiveBot.Services.CommandHelp.CommandHelpService.GetModuleHelpData() in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Services\CommandHelp\CommandHelpService.cs:line 46
+   at MajorInteractiveBot.Modules.HelpModule.HelpAsync() in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Modules\HelpModule.cs:line 31
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_0.<<BuildCommand>g__ExecuteCallback|0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Discord.Commands.CommandInfo.ExecuteInternalAsync(ICommandContext context, Object[] args, IServiceProvider services)
+   --- End of inner exception stack trace ---
+2019-07-25 23:18:21.085 -05:00 [Warning] 23:18:21 Gateway     A MessageReceived handler is blocking the gateway task.
+2019-07-25 23:18:21.221 -05:00 [Fatal] Length cannot be less than zero.
+Parameter name: length
+2019-07-25 23:25:24.600 -05:00 [Error] An exception bubbled up: 
+Discord.Commands.CommandException: Error occurred executing "help" for Foxtrek_64#3858 in MODiX Demo/general. ---> System.ArgumentOutOfRangeException: Length cannot be less than zero.
+Parameter name: length
+   at System.String.Substring(Int32 startIndex, Int32 length)
+   at MajorInteractiveBot.Services.CommandHelp.ModuleHelpData.FromModuleInfo(ModuleInfo module) in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Services\CommandHelp\ModuleHelpData.cs:line 24
+   at MajorInteractiveBot.Services.CommandHelp.CommandHelpService.<>c.<GetModuleHelpData>b__3_2(ModuleInfo x) in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Services\CommandHelp\CommandHelpService.cs:line 49
+   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at MajorInteractiveBot.Services.CommandHelp.CommandHelpService.<GetModuleHelpData>b__3_0() in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Services\CommandHelp\CommandHelpService.cs:line 47
+   at System.Threading.LazyInitializer.EnsureInitializedCore[T](T& target, Func`1 valueFactory)
+   at MajorInteractiveBot.Services.CommandHelp.CommandHelpService.GetModuleHelpData() in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Services\CommandHelp\CommandHelpService.cs:line 46
+   at MajorInteractiveBot.Modules.HelpModule.HelpAsync() in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Modules\HelpModule.cs:line 31
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_0.<<BuildCommand>g__ExecuteCallback|0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Discord.Commands.CommandInfo.ExecuteInternalAsync(ICommandContext context, Object[] args, IServiceProvider services)
+   --- End of inner exception stack trace ---
+2019-07-25 23:25:24.654 -05:00 [Warning] 23:25:24 Gateway     A MessageReceived handler is blocking the gateway task.
+2019-07-25 23:25:24.843 -05:00 [Fatal] Length cannot be less than zero.
+Parameter name: length
+2019-07-25 23:26:27.871 -05:00 [Warning] 23:26:27 Gateway     A MessageReceived handler is blocking the gateway task.
+2019-07-25 23:26:48.594 -05:00 [Information] Executed DbCommand ("3"ms) [Parameters=["@__foundModule_Name_0='?', @__Context_Guild_Id_1='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"GuildId\", x.\"ModuleName\", x.\"Enabled\"
+FROM \"Modules\" AS x
+WHERE (x.\"ModuleName\" = @__foundModule_Name_0) AND (x.\"GuildId\" = @__Context_Guild_Id_1)
+LIMIT 1"
+2019-07-25 23:26:52.994 -05:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@__context_Guild_Id_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"ChannelId\"
+FROM \"CommandChannels\" AS x
+WHERE x.\"GuildId\" = @__context_Guild_Id_0"
+2019-07-25 23:27:00.572 -05:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@__context_Guild_Id_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"ChannelId\"
+FROM \"CommandChannels\" AS x
+WHERE x.\"GuildId\" = @__context_Guild_Id_0"
+2019-07-25 23:31:10.271 -05:00 [Information] Stopping bot service.

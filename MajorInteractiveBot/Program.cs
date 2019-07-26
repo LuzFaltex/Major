@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace MajorInteractiveBot
@@ -21,12 +22,17 @@ namespace MajorInteractiveBot
         public async Task MainAsync()
         {
             var hostBuilder = new HostBuilder()
+                .ConfigureHostConfiguration(builder =>
+                {
+                    builder.AddEnvironmentVariables();
+                })
                 .ConfigureAppConfiguration((ctx, builder) =>
                 {
-                    Console.WriteLine(ctx.HostingEnvironment.EnvironmentName);
-                    builder.AddJsonFile("appsettings.json");
-                    builder.AddJsonFile($"appsettings.{ctx.HostingEnvironment.EnvironmentName}.json", true);
                     builder.AddEnvironmentVariables("MAJOR_");
+                    builder.AddJsonFile("appsettings.json");
+                    builder.AddJsonFile($"appsettings.{ctx.HostingEnvironment.EnvironmentName}.json", true);                    
+
+                    Debug.WriteLine(ctx.HostingEnvironment.EnvironmentName);
 
                     if (ctx.HostingEnvironment.IsDevelopment())
                     {
@@ -44,7 +50,7 @@ namespace MajorInteractiveBot
                 })
                 .ConfigureServices((context, services) =>
                 {
-                    var serviceCollection = new ServiceCollection()
+                    services
                         .Configure<MajorConfig>(context.Configuration)
                         .AddDbContext<MajorContext>(options =>
                         {

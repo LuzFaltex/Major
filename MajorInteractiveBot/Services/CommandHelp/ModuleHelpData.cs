@@ -19,7 +19,7 @@ namespace MajorInteractiveBot.Services.CommandHelp
             var moduleName = module.Name;
 
             var suffixPosition = moduleName.IndexOf("Module", StringComparison.OrdinalIgnoreCase);
-            if (suffixPosition >= -1)
+            if (suffixPosition > -1)
             {
                 moduleName = moduleName.Substring(0, suffixPosition).Humanize();
             }
