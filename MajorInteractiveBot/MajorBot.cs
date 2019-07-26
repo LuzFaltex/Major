@@ -44,10 +44,6 @@ namespace MajorInteractiveBot
             Log = _provider.GetRequiredService<ILogger<MajorBot>>();
         }
 
-        /// <inheritdoc />
-        public override Task StartAsync(CancellationToken stoppingToken)
-            => ExecuteAsync(stoppingToken);
-
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-us");
