@@ -48,7 +48,8 @@ namespace MajorInteractiveBot
                         .Configure<MajorConfig>(context.Configuration)
                         .AddDbContext<MajorContext>(options =>
                         {
-                            options.UseSqlite(context.Configuration.GetValue<string>(nameof(MajorConfig.DbConnection)));
+                            // options.UseSqlite(context.Configuration.GetValue<string>(nameof(MajorConfig.DbConnection)));
+                            options.UseNpgsql(context.Configuration.GetConnectionString("MajorDb"));
                         })
                         .AddSingleton<DiscordSocketClient>()
                         .AddSingleton<CommandService>()

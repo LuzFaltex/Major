@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
+using System;
+using System.IO;
 
 namespace MajorInteractiveBot.Data
 {
@@ -7,8 +10,20 @@ namespace MajorInteractiveBot.Data
     {
         public MajorContext CreateDbContext(string[] args)
         {
+            var pathToAppSettings = Directory.GetCurrentDirectory();
+
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(pathToAppSettings)
+                .AddUserSecrets<MajorContext>()
+                .AddEnvironmentVariables("MAJOR_")
+                .Build();
+
             var optionsBuilder = new DbContextOptionsBuilder<MajorContext>();
-            optionsBuilder.UseSqlite("Data Source=Major.sqlite");
+
+            var connectionString = configuration.GetConnectionString("MajorDb");
+
+            optionsBuilder.UseNpgsql(connectionString);
+
             return new MajorContext(optionsBuilder.Options);
         }
     }
