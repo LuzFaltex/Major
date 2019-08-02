@@ -1,4 +1,5 @@
 ﻿using Discord;
+using Discord.Addons.Interactive;
 using Discord.Commands;
 using Discord.WebSocket;
 using MajorInteractiveBot.Data;
@@ -17,17 +18,17 @@ namespace MajorInteractiveBot.Modules
         private readonly CommandService _commands;
         private readonly IServiceProvider _services;
         private readonly MajorContext _config;
-        private readonly ILogger Log;
+        private readonly ILogger Log;        
         #endregion
 
-        public CommandHandler(IServiceProvider services, MajorContext config)
+        public CommandHandler(IServiceProvider services, MajorContext config, DiscordSocketClient client, CommandService commands, ILogger<CommandHandler> logger)
         {
             _services = services;
             _config = config;
 
-            _client = _services.GetRequiredService<DiscordSocketClient>();
-            _commands = _services.GetRequiredService<CommandService>();
-            Log = _services.GetRequiredService<ILogger<CommandHandler>>();
+            _client = client;
+            _commands = commands;
+            Log = logger;
 
             _client.MessageReceived += MessageReceived;
         }

@@ -7,7 +7,8 @@ namespace MajorInteractiveBot.Data
     {
         public DbSet<Guild> Guilds { get; set; }
         public DbSet<CommandChannel> CommandChannels { get; set; }
-        public DbSet<Module> Modules { get; set; }
+        public DbSet<Module> DisabledModules { get; set; }
+        public DbSet<AssignableRole> AssignableRoles { get; set; }
 
         public MajorContext(DbContextOptions<MajorContext> options) : base(options)
         {

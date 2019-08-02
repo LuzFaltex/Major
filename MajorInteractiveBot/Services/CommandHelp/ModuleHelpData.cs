@@ -1,6 +1,8 @@
 ﻿using Discord.Commands;
 using Humanizer;
 using MajorInteractiveBot.Attributes;
+using MajorInteractiveBot.Extensions;
+using MajorInteractiveBot.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,20 +13,22 @@ namespace MajorInteractiveBot.Services.CommandHelp
     {
         public string Name { get; set; }
         public string Summary { get; set; }
-
         public IReadOnlyCollection<CommandHelpData> Commands { get; set; }
         public IReadOnlyCollection<string> HelpTags { get; set; }
+        public bool SystemModule { get; set; }
         public static ModuleHelpData FromModuleInfo(ModuleInfo module)
         {
-            var moduleName = module.Name;
+            var moduleName = module.Name.Humanize(LetterCasing.Title);
 
+            /*
             var suffixPosition = moduleName.IndexOf("Module", StringComparison.OrdinalIgnoreCase);
             if (suffixPosition > -1)
             {
                 moduleName = moduleName.Substring(0, suffixPosition).Humanize();
             }
+            */
 
-            moduleName = moduleName.ApplyCase(LetterCasing.Title);
+            // moduleName = moduleName.ApplyCase(LetterCasing.Title);
 
             var ret = new ModuleHelpData
             {
@@ -38,7 +42,8 @@ namespace MajorInteractiveBot.Services.CommandHelp
                     .OfType<HelpTagsAttribute>()
                     .SingleOrDefault()
                     ?.Tags
-                    ?? Array.Empty<string>()
+                    ?? Array.Empty<string>(),
+                SystemModule = module.IsSystemModule()
             };
 
             return ret;

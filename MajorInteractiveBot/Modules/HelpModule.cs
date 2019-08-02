@@ -1,6 +1,7 @@
 ﻿using Discord;
 using Discord.Commands;
 using Discord.Net;
+using MajorInteractiveBot.Attributes;
 using MajorInteractiveBot.Data;
 using MajorInteractiveBot.Services.CommandHelp;
 using System;
@@ -12,8 +13,9 @@ using System.Threading.Tasks;
 namespace MajorInteractiveBot.Modules
 {
     [Name("Help")]
+    [Group("help")]
     [Summary("Provides commands for helping users understand how to interact with General.")]
-    public sealed class HelpModule : ModuleBase
+    public class HelpModule : ModuleBase
     {
         private readonly ICommandHelpService _commandHelpService;
         private readonly MajorContext _config;
@@ -24,18 +26,19 @@ namespace MajorInteractiveBot.Modules
             _config = config;
         }
 
-        [Command("help"), Summary("Prints a neat list of all commands."), Alias()]
+        [Command]
+        [Summary("Prints a neat list of all commands.")]
         public async Task HelpAsync()
         {
             // var guildConfig = _config.GuildConfigurations[Context.Guild.Id];
-            var modules = _commandHelpService.GetModuleHelpData()
-                .Select(d => d.Name)
+            var modules = _commandHelpService.GetModuleHelpData();
+                // .Select(d => d.Name)
                 // .Where(x => guildConfig.IsModuleEnabled(x))
-                .OrderBy(d => d);
+                // .OrderBy(d => d);
 
             var descriptionBuilder = new StringBuilder()
                 .AppendLine("Modules:")
-                .AppendJoin(", ", modules)
+                .AppendJoin(", ", modules.Select(d => d.Name))
                 .AppendLine()
                 .AppendLine()
                 .AppendLine($"Do `.help dm` to have everything DMed to you. (Spammy!)")
@@ -48,9 +51,8 @@ namespace MajorInteractiveBot.Modules
             await ReplyAsync(embed: embed.Build());
         }
 
-        [Command("help dm")]
+        [Command("dm")]
         [Summary("Spams the user's DMs with a list of every command available.")]
-        [Alias()]
         public async Task HelpDMAsync()
         {
             var userDM = await Context.User.GetOrCreateDMChannelAsync();
@@ -72,10 +74,9 @@ namespace MajorInteractiveBot.Modules
             await ReplyAsync("📬");
         }
 
-        [Command("help")]
+        [Command]
         [Summary("Prints a neat list of all commands based on the supplied query.")]
         [Priority(-10)]
-        [Alias()]
         public async Task HelpAsync(
             [Remainder]
             [Summary("The module name or related query to use to search for the help module.")]
@@ -90,10 +91,11 @@ namespace MajorInteractiveBot.Modules
                 return;
             }
 
-            var module = _config.Modules.FirstOrDefault(x => x.ModuleName == foundModule.Name && x.GuildId == Context.Guild.Id);
-            if (!module.Enabled)
+            var module = _config.DisabledModules.FirstOrDefault(x => x.ModuleName == foundModule.Name && x.GuildId == Context.Guild.Id);
+            if (!(module is null))
             {
                 await ReplyAsync($"Sorry, the selected module is disabled. If you believe this to be in error, please contact an administrator.");
+                return;
             }
             
             var embed = GetEmbedForModule(foundModule);

@@ -1,0 +1,187 @@
+2019-07-26 11:00:34.451 -05:00 [Information] Starting bot...
+2019-07-26 11:00:34.827 -05:00 [Information] Starting behaviors.
+2019-07-26 11:00:34.829 -05:00 [Information] Loading command modules.
+2019-07-26 11:00:35.011 -05:00 [Information] 3 modules loaded, containing 6 commands
+2019-07-26 11:00:35.034 -05:00 [Information] Logging into Discord and starting the client.
+2019-07-26 11:00:35.067 -05:00 [Information] 11:00:35 Discord     Discord.Net v2.1.1 (API v6)
+2019-07-26 11:00:38.929 -05:00 [Information] Discord client started successfully.
+2019-07-26 11:00:38.996 -05:00 [Information] 11:00:38 Gateway     Connecting
+2019-07-26 11:00:40.534 -05:00 [Information] 11:00:40 Gateway     Connected
+2019-07-26 11:00:40.906 -05:00 [Information] 11:00:40 Gateway     Ready
+2019-07-26 11:00:52.897 -05:00 [Information] Entity Framework Core "2.2.6-servicing-10079" initialized '"MajorContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None"
+2019-07-26 11:00:54.172 -05:00 [Warning] 11:00:54 Gateway     A MessageReceived handler is blocking the gateway task.
+2019-07-26 11:00:55.483 -05:00 [Information] Executed DbCommand ("31"ms) [Parameters=["@__get_Item_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT e.\"GuildId\", e.\"CommandPrefix\", e.\"GreetUser\", e.\"GreetingChannel\", e.\"GreetingMessage\"
+FROM \"Guilds\" AS e
+WHERE e.\"GuildId\" = @__get_Item_0
+LIMIT 1"
+2019-07-26 11:03:14.577 -05:00 [Information] Stopping bot service.
+2019-07-26 11:10:47.894 -05:00 [Information] Starting bot...
+2019-07-26 11:10:48.041 -05:00 [Information] Starting behaviors.
+2019-07-26 11:10:48.045 -05:00 [Information] Loading command modules.
+2019-07-26 11:10:48.151 -05:00 [Information] 3 modules loaded, containing 6 commands
+2019-07-26 11:10:48.164 -05:00 [Information] Logging into Discord and starting the client.
+2019-07-26 11:10:48.192 -05:00 [Information] 11:10:48 Discord     Discord.Net v2.1.1 (API v6)
+2019-07-26 11:10:49.331 -05:00 [Information] Discord client started successfully.
+2019-07-26 11:10:49.352 -05:00 [Information] 11:10:49 Gateway     Connecting
+2019-07-26 11:10:50.383 -05:00 [Information] 11:10:50 Gateway     Connected
+2019-07-26 11:10:52.053 -05:00 [Information] Entity Framework Core "2.2.6-servicing-10079" initialized '"MajorContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None"
+2019-07-26 11:10:53.339 -05:00 [Information] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT g.\"GuildId\", g.\"CommandPrefix\", g.\"GreetUser\", g.\"GreetingChannel\", g.\"GreetingMessage\"
+FROM \"Guilds\" AS g"
+2019-07-26 11:10:53.527 -05:00 [Information] 11:10:53 Gateway     Ready
+2019-07-26 11:12:12.678 -05:00 [Information] Executed DbCommand ("13"ms) [Parameters=["@__context_Guild_Id_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"ChannelId\"
+FROM \"CommandChannels\" AS x
+WHERE x.\"GuildId\" = @__context_Guild_Id_0"
+2019-07-26 11:12:35.703 -05:00 [Information] Stopping bot service.
+2019-07-26 11:13:21.305 -05:00 [Information] Starting bot...
+2019-07-26 11:13:21.449 -05:00 [Information] Starting behaviors.
+2019-07-26 11:13:21.453 -05:00 [Information] Loading command modules.
+2019-07-26 11:13:21.562 -05:00 [Information] 3 modules loaded, containing 6 commands
+2019-07-26 11:13:21.574 -05:00 [Information] Logging into Discord and starting the client.
+2019-07-26 11:13:21.604 -05:00 [Information] 11:13:21 Discord     Discord.Net v2.1.1 (API v6)
+2019-07-26 11:13:22.706 -05:00 [Information] Discord client started successfully.
+2019-07-26 11:13:22.726 -05:00 [Information] 11:13:22 Gateway     Connecting
+2019-07-26 11:13:23.659 -05:00 [Information] 11:13:23 Gateway     Connected
+2019-07-26 11:13:25.220 -05:00 [Information] Entity Framework Core "2.2.6-servicing-10079" initialized '"MajorContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None"
+2019-07-26 11:13:26.480 -05:00 [Information] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT g.\"GuildId\", g.\"CommandPrefix\", g.\"GreetUser\", g.\"GreetingChannel\", g.\"GreetingMessage\"
+FROM \"Guilds\" AS g"
+2019-07-26 11:13:26.675 -05:00 [Information] 11:13:26 Gateway     Ready
+2019-07-26 11:13:34.786 -05:00 [Information] Executed DbCommand ("13"ms) [Parameters=["@__context_Guild_Id_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"ChannelId\"
+FROM \"CommandChannels\" AS x
+WHERE x.\"GuildId\" = @__context_Guild_Id_0"
+2019-07-26 11:15:40.499 -05:00 [Information] Stopping bot service.
+2019-07-26 11:16:25.045 -05:00 [Information] Starting bot...
+2019-07-26 11:16:25.220 -05:00 [Information] Starting behaviors.
+2019-07-26 11:16:25.222 -05:00 [Information] Loading command modules.
+2019-07-26 11:16:25.337 -05:00 [Information] 3 modules loaded, containing 6 commands
+2019-07-26 11:16:25.352 -05:00 [Information] Logging into Discord and starting the client.
+2019-07-26 11:16:25.407 -05:00 [Information] 11:16:25 Discord     Discord.Net v2.1.1 (API v6)
+2019-07-26 11:16:26.786 -05:00 [Information] Discord client started successfully.
+2019-07-26 11:16:26.806 -05:00 [Information] 11:16:26 Gateway     Connecting
+2019-07-26 11:16:27.817 -05:00 [Information] 11:16:27 Gateway     Connected
+2019-07-26 11:16:29.400 -05:00 [Information] Entity Framework Core "2.2.6-servicing-10079" initialized '"MajorContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None"
+2019-07-26 11:16:30.773 -05:00 [Information] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT g.\"GuildId\", g.\"CommandPrefix\", g.\"GreetUser\", g.\"GreetingChannel\", g.\"GreetingMessage\"
+FROM \"Guilds\" AS g"
+2019-07-26 11:16:30.973 -05:00 [Information] 11:16:30 Gateway     Ready
+2019-07-26 11:16:36.297 -05:00 [Information] Executed DbCommand ("16"ms) [Parameters=["@__context_Guild_Id_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"ChannelId\"
+FROM \"CommandChannels\" AS x
+WHERE x.\"GuildId\" = @__context_Guild_Id_0"
+2019-07-26 11:17:47.141 -05:00 [Information] Stopping bot service.
+2019-07-26 11:18:48.618 -05:00 [Information] Starting bot...
+2019-07-26 11:18:48.770 -05:00 [Information] Starting behaviors.
+2019-07-26 11:18:48.775 -05:00 [Information] Loading command modules.
+2019-07-26 11:18:48.888 -05:00 [Information] 3 modules loaded, containing 6 commands
+2019-07-26 11:18:48.902 -05:00 [Information] Logging into Discord and starting the client.
+2019-07-26 11:18:48.933 -05:00 [Information] 11:18:48 Discord     Discord.Net v2.1.1 (API v6)
+2019-07-26 11:18:50.112 -05:00 [Information] Discord client started successfully.
+2019-07-26 11:18:50.135 -05:00 [Information] 11:18:50 Gateway     Connecting
+2019-07-26 11:18:52.184 -05:00 [Information] 11:18:52 Gateway     Connected
+2019-07-26 11:18:53.747 -05:00 [Information] Entity Framework Core "2.2.6-servicing-10079" initialized '"MajorContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None"
+2019-07-26 11:18:55.031 -05:00 [Information] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT g.\"GuildId\", g.\"CommandPrefix\", g.\"GreetUser\", g.\"GreetingChannel\", g.\"GreetingMessage\"
+FROM \"Guilds\" AS g"
+2019-07-26 11:18:55.208 -05:00 [Information] 11:18:55 Gateway     Ready
+2019-07-26 11:19:03.566 -05:00 [Information] Executed DbCommand ("16"ms) [Parameters=["@__context_Guild_Id_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"ChannelId\"
+FROM \"CommandChannels\" AS x
+WHERE x.\"GuildId\" = @__context_Guild_Id_0"
+2019-07-26 11:20:07.051 -05:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@__context_Guild_Id_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"ChannelId\"
+FROM \"CommandChannels\" AS x
+WHERE x.\"GuildId\" = @__context_Guild_Id_0"
+2019-07-26 11:20:09.147 -05:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@__context_Guild_Id_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"ChannelId\"
+FROM \"CommandChannels\" AS x
+WHERE x.\"GuildId\" = @__context_Guild_Id_0"
+2019-07-26 11:20:23.104 -05:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@__context_Guild_Id_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"ChannelId\"
+FROM \"CommandChannels\" AS x
+WHERE x.\"GuildId\" = @__context_Guild_Id_0"
+2019-07-26 11:20:36.921 -05:00 [Warning] 11:20:36 Gateway     A MessageReceived handler is blocking the gateway task.
+2019-07-26 11:29:02.555 -05:00 [Information] Stopping bot service.
+2019-07-26 11:40:25.013 -05:00 [Information] Starting bot...
+2019-07-26 11:40:25.148 -05:00 [Information] Starting behaviors.
+2019-07-26 11:40:25.150 -05:00 [Information] Loading command modules.
+2019-07-26 11:40:25.258 -05:00 [Information] 3 modules loaded, containing 6 commands
+2019-07-26 11:40:25.272 -05:00 [Information] Logging into Discord and starting the client.
+2019-07-26 11:40:25.307 -05:00 [Information] 11:40:25 Discord     Discord.Net v2.1.1 (API v6)
+2019-07-26 11:40:26.565 -05:00 [Information] Discord client started successfully.
+2019-07-26 11:40:26.586 -05:00 [Information] 11:40:26 Gateway     Connecting
+2019-07-26 11:40:28.653 -05:00 [Information] 11:40:28 Gateway     Connected
+2019-07-26 11:40:30.218 -05:00 [Information] Entity Framework Core "2.2.6-servicing-10079" initialized '"MajorContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None"
+2019-07-26 11:40:31.564 -05:00 [Information] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT g.\"GuildId\", g.\"CommandPrefix\", g.\"GreetUser\", g.\"GreetingChannel\", g.\"GreetingMessage\"
+FROM \"Guilds\" AS g"
+2019-07-26 11:40:31.743 -05:00 [Information] 11:40:31 Gateway     Ready
+2019-07-26 11:40:57.908 -05:00 [Information] Stopping bot service.
+2019-07-26 11:46:34.039 -05:00 [Information] Starting bot...
+2019-07-26 11:46:34.204 -05:00 [Information] Starting behaviors.
+2019-07-26 11:46:34.207 -05:00 [Information] Loading command modules.
+2019-07-26 11:46:34.313 -05:00 [Information] 3 modules loaded, containing 6 commands
+2019-07-26 11:46:34.326 -05:00 [Information] Logging into Discord and starting the client.
+2019-07-26 11:46:34.362 -05:00 [Information] 11:46:34 Discord     Discord.Net v2.1.1 (API v6)
+2019-07-26 11:46:35.616 -05:00 [Information] Discord client started successfully.
+2019-07-26 11:46:35.644 -05:00 [Information] 11:46:35 Gateway     Connecting
+2019-07-26 11:46:36.800 -05:00 [Information] 11:46:36 Gateway     Connected
+2019-07-26 11:46:38.470 -05:00 [Information] Entity Framework Core "2.2.6-servicing-10079" initialized '"MajorContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None"
+2019-07-26 11:46:39.758 -05:00 [Information] Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT g.\"GuildId\", g.\"CommandPrefix\", g.\"GreetUser\", g.\"GreetingChannel\", g.\"GreetingMessage\"
+FROM \"Guilds\" AS g"
+2019-07-26 11:46:39.959 -05:00 [Information] 11:46:39 Gateway     Ready
+2019-07-26 11:48:58.593 -05:00 [Information] Executed DbCommand ("13"ms) [Parameters=["@__context_Guild_Id_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"ChannelId\"
+FROM \"CommandChannels\" AS x
+WHERE x.\"GuildId\" = @__context_Guild_Id_0"
+2019-07-26 11:49:10.073 -05:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@__context_Guild_Id_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"ChannelId\"
+FROM \"CommandChannels\" AS x
+WHERE x.\"GuildId\" = @__context_Guild_Id_0"
+2019-07-26 11:49:31.128 -05:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@__context_Guild_Id_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"ChannelId\"
+FROM \"CommandChannels\" AS x
+WHERE x.\"GuildId\" = @__context_Guild_Id_0"
+2019-07-26 11:49:38.629 -05:00 [Information] Stopping bot service.
+2019-07-26 13:17:40.914 -05:00 [Information] Starting bot...
+2019-07-26 13:17:41.078 -05:00 [Information] Starting behaviors.
+2019-07-26 13:17:41.081 -05:00 [Information] Loading command modules.
+2019-07-26 13:17:41.227 -05:00 [Information] 4 modules loaded, containing 7 commands
+2019-07-26 13:17:41.245 -05:00 [Information] Logging into Discord and starting the client.
+2019-07-26 13:17:41.286 -05:00 [Information] 13:17:41 Discord     Discord.Net v2.1.1 (API v6)
+2019-07-26 13:17:42.471 -05:00 [Information] Discord client started successfully.
+2019-07-26 13:17:42.491 -05:00 [Information] 13:17:42 Gateway     Connecting
+2019-07-26 13:17:43.515 -05:00 [Information] 13:17:43 Gateway     Connected
+2019-07-26 13:17:45.186 -05:00 [Information] Entity Framework Core "2.2.6-servicing-10079" initialized '"MajorContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None"
+2019-07-26 13:17:46.659 -05:00 [Information] Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT g.\"GuildId\", g.\"BotManager\", g.\"CommandPrefix\", g.\"GreetUser\", g.\"GreetingChannel\", g.\"GreetingMessage\"
+FROM \"Guilds\" AS g"
+2019-07-26 13:17:46.877 -05:00 [Information] 13:17:46 Gateway     Ready
+2019-07-26 13:17:55.536 -05:00 [Error] An exception bubbled up: 
+Discord.Commands.CommandException: Error occurred executing "info" for Foxtrek_64#3858 in MODiX Demo/bot-spam. ---> System.NullReferenceException: Object reference not set to an instance of an object.
+   at MajorInteractiveBot.Modules.GuildModule.GetGuildInfo() in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Modules\GuildModule.cs:line 37
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_0.<<BuildCommand>g__ExecuteCallback|0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Discord.Commands.CommandInfo.ExecuteInternalAsync(ICommandContext context, Object[] args, IServiceProvider services)
+   --- End of inner exception stack trace ---
+2019-07-26 13:17:55.870 -05:00 [Fatal] Object reference not set to an instance of an object.
+2019-07-26 13:25:31.263 -05:00 [Information] Starting bot...
+2019-07-26 13:25:31.427 -05:00 [Information] Starting behaviors.
+2019-07-26 13:25:31.430 -05:00 [Information] Loading command modules.
+2019-07-26 13:25:31.561 -05:00 [Information] 4 modules loaded, containing 7 commands
+2019-07-26 13:25:31.585 -05:00 [Information] Logging into Discord and starting the client.
+2019-07-26 13:25:31.617 -05:00 [Information] 13:25:31 Discord     Discord.Net v2.1.1 (API v6)
+2019-07-26 13:25:32.980 -05:00 [Information] Discord client started successfully.
+2019-07-26 13:25:32.997 -05:00 [Information] 13:25:32 Gateway     Connecting
+2019-07-26 13:25:33.980 -05:00 [Information] 13:25:33 Gateway     Connected
+2019-07-26 13:25:35.591 -05:00 [Information] Entity Framework Core "2.2.6-servicing-10079" initialized '"MajorContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None"
+2019-07-26 13:25:36.979 -05:00 [Information] Executed DbCommand ("16"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT g.\"GuildId\", g.\"BotManager\", g.\"CommandPrefix\", g.\"GreetUser\", g.\"GreetingChannel\", g.\"GreetingMessage\"
+FROM \"Guilds\" AS g"
+2019-07-26 13:25:37.182 -05:00 [Information] 13:25:37 Gateway     Ready
+2019-07-26 13:25:58.966 -05:00 [Warning] 13:25:58 Gateway     A MessageReceived handler is blocking the gateway task.
+2019-07-26 13:31:30.060 -05:00 [Information] Stopping bot service.

@@ -5,6 +5,7 @@ using MajorInteractiveBot.Data;
 using MajorInteractiveBot.Data.Models;
 using MajorInteractiveBot.Extensions;
 using MajorInteractiveBot.Modules;
+using MajorInteractiveBot.TypeReaders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,7 +32,7 @@ namespace MajorInteractiveBot
         private readonly ILogger<MajorBot> Log;
         private readonly MajorContext _context;
         private readonly MajorConfig _applicationConfig;
-        private readonly CommandHandler _commandHandler;
+        
 
         public MajorBot(IServiceProvider services, MajorContext context)
         {
@@ -45,7 +46,8 @@ namespace MajorInteractiveBot
             _serilogAdapter = new DiscordSerilogAdapter(_provider.GetRequiredService<ILogger<DiscordSerilogAdapter>>());
             Log = _provider.GetRequiredService<ILogger<MajorBot>>();
 
-            _commandHandler = _provider.GetRequiredService<CommandHandler>();
+            // Just construct it so we have a concrete reference to it.
+           _provider.GetRequiredService<CommandHandler>();
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -69,6 +71,7 @@ namespace MajorInteractiveBot
                 _client.LeftGuild += LeftGuild;
                 _client.UserJoined += UserJoined;
                 _client.UserLeft += UserLeft;
+                _client.Ready += Ready;
                 _commands.Log += _serilogAdapter.HandleLog;
 
                 // Register the cancellation token so we can stop listening to events if the server is
@@ -77,6 +80,10 @@ namespace MajorInteractiveBot
 
                 Log.LogInformation("Starting behaviors.");
                 // We don't have any rn
+
+                Log.LogInformation("Loading Type Readers.");
+
+                _commands.AddTypeReader<ModuleInfo>(new ModuleTypeReader());
 
                 Log.LogInformation("Loading command modules.");
 
@@ -126,19 +133,27 @@ namespace MajorInteractiveBot
                 _client.LeftGuild -= LeftGuild;
                 _client.UserJoined -= UserJoined;
                 _client.UserLeft -= UserLeft;
+                _client.Ready += Ready;
             }
         }
-        
+
+        private Task Ready() => _context.Guilds.LoadAsync();
+
         private async Task UserJoined(SocketGuildUser user)
         {
-            var guild = _context.Guilds.Find(user.Guild.Id);
+            var guild = await _context.Guilds.FindAsync(user.Guild.Id);
             var channelId = guild.GreetingChannel;
 
-            if (!guild.GreetUser || channelId == ulong.MaxValue) return;
+            if (!guild.GreetUser || channelId == 0 || string.IsNullOrWhiteSpace(guild.GreetingMessage)) return;
 
             var channel = user.Guild.GetTextChannel(channelId);
 
-            await channel.SendMessageAsync(guild.GreetingMessage);
+            var greetingMessage = guild.GreetingMessage
+                .Replace("{User}", user.Username)
+                .Replace("{UserMention}", user.Mention)
+                .Replace("{Guild}", user.Guild.Name);
+
+            await channel.SendMessageAsync(greetingMessage);
 
             Log.LogInformation("User {User} joined {Guild}", user.UsernameAndDiscrim(), user.Guild.Name);
         }
@@ -159,9 +174,7 @@ namespace MajorInteractiveBot
                 CommandPrefix = "."
             };
             #pragma warning restore IDE0001
-            HashSet<Module> modules = GetAllModules(guild.Id);
             await _context.Guilds.AddAsync(guildConfig);
-            await _context.Modules.AddRangeAsync(modules);
             await _context.SaveChangesAsync();
         }
 
@@ -180,33 +193,14 @@ namespace MajorInteractiveBot
                 _context.CommandChannels.RemoveRange(cmdChannels);
             }
 
-            var modules = await _context.Modules
+            var modules = await _context.DisabledModules
                 .Where(x => x.GuildId == guild.Id).ToListAsync();
             if (modules.Count > 0)
             {
-                _context.Modules.RemoveRange(modules);
+                _context.DisabledModules.RemoveRange(modules);
             }
 
             await _context.SaveChangesAsync();
-        }
-
-        private HashSet<Module> GetAllModules(ulong guildId)
-        {
-            var modules = _provider.GetRequiredService<CommandService>().Modules;
-
-            var ret = new HashSet<Module>();
-
-            foreach (var module in modules)
-            {
-                ret.Add(new Module()
-                {
-                    GuildId = guildId,
-                    ModuleName = module.Name,
-                    Enabled = true
-                });
-            }
-
-            return ret;
         }
 
         private Task OnDisconnect(Exception ex)

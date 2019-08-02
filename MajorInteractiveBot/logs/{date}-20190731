@@ -1,0 +1,12 @@
+2019-07-31 05:31:44.087 -05:00 [Warning] 05:31:44 Gateway     System.Exception: WebSocket connection was closed ---> Discord.Net.WebSocketClosedException: The server sent close 1001: ""
+   at Discord.Net.WebSockets.DefaultWebSocketClient.RunAsync(CancellationToken cancelToken)
+   --- End of inner exception stack trace ---
+   at Discord.ConnectionManager.<>c__DisplayClass29_0.<<StartAsync>b__0>d.MoveNext()
+2019-07-31 05:31:44.192 -05:00 [Information] 05:31:44 Gateway     Disconnecting
+2019-07-31 05:31:44.225 -05:00 [Information] The bot disconnected unexpectedly. Stopping the application.
+System.Exception: WebSocket connection was closed ---> Discord.Net.WebSocketClosedException: The server sent close 1001: ""
+   at Discord.Net.WebSockets.DefaultWebSocketClient.RunAsync(CancellationToken cancelToken)
+   --- End of inner exception stack trace ---
+   at Discord.ConnectionManager.<>c__DisplayClass29_0.<<StartAsync>b__0>d.MoveNext()
+2019-07-31 05:31:44.248 -05:00 [Information] 05:31:44 Gateway     Disconnected
+2019-07-31 05:31:44.269 -05:00 [Information] Stopping bot service.

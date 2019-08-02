@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 
 namespace MajorInteractiveBot.Modules
 {
+    [Name("General")]
+    [Group("general")]
+    [Summary("General purpose commands")]
     public class GeneralModule : ModuleBase
     {
         private readonly DiscordSocketClient _discordClient;

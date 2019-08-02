@@ -2,15 +2,17 @@
 using MajorInteractiveBot.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace MajorInteractiveBot.Data.Migrations
 {
     [DbContext(typeof(MajorContext))]
-    partial class MajorContextModelSnapshot : ModelSnapshot
+    [Migration("20190802021421_Add18PlusRole")]
+    partial class Add18PlusRole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,15 +26,7 @@ namespace MajorInteractiveBot.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
 
-                    b.Property<decimal>("GuildId")
-                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
-
-                    b.Property<int>("Position");
-
                     b.Property<bool>("Require18Plus");
-
-                    b.Property<decimal>("RoleCategory")
-                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
 
                     b.HasKey("RoleId");
 
@@ -89,6 +83,20 @@ namespace MajorInteractiveBot.Data.Migrations
                     b.HasKey("GuildId", "ModuleName");
 
                     b.ToTable("DisabledModules");
+                });
+
+            modelBuilder.Entity("MajorInteractiveBot.Data.Models.RoleCategory", b =>
+                {
+                    b.Property<decimal>("CategoryRole")
+                        .ValueGeneratedOnAdd()
+                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
+
+                    b.Property<decimal>("GuildId")
+                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
+
+                    b.HasKey("CategoryRole");
+
+                    b.ToTable("RoleCategories");
                 });
 #pragma warning restore 612, 618
         }
