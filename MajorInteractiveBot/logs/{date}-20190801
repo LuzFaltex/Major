@@ -1,0 +1,342 @@
+2019-08-01 19:00:32.796 -05:00 [Information] Starting bot...
+2019-08-01 19:00:32.914 -05:00 [Information] Starting behaviors.
+2019-08-01 19:00:32.916 -05:00 [Information] Loading Type Readers.
+2019-08-01 19:00:32.924 -05:00 [Information] Loading command modules.
+2019-08-01 19:00:33.054 -05:00 [Information] 7 modules loaded, containing 24 commands
+2019-08-01 19:00:33.069 -05:00 [Information] Logging into Discord and starting the client.
+2019-08-01 19:00:33.101 -05:00 [Information] 19:00:33 Discord     Discord.Net v2.1.1 (API v6)
+2019-08-01 19:00:34.363 -05:00 [Information] Discord client started successfully.
+2019-08-01 19:00:34.386 -05:00 [Information] 19:00:34 Gateway     Connecting
+2019-08-01 19:00:36.159 -05:00 [Information] 19:00:36 Gateway     Connected
+2019-08-01 19:00:37.740 -05:00 [Information] Entity Framework Core "2.2.6-servicing-10079" initialized '"MajorContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None"
+2019-08-01 19:00:39.189 -05:00 [Information] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT g.\"GuildId\", g.\"BotManager\", g.\"CommandPrefix\", g.\"GreetUser\", g.\"GreetingChannel\", g.\"GreetingMessage\"
+FROM \"Guilds\" AS g"
+2019-08-01 19:00:39.372 -05:00 [Information] 19:00:39 Gateway     Ready
+2019-08-01 19:00:47.129 -05:00 [Information] Executed DbCommand ("18"ms) [Parameters=["@__Context_Guild_Id_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"GuildId\", x.\"ModuleName\", x.\"Enabled\"
+FROM \"Modules\" AS x
+WHERE x.\"GuildId\" = @__Context_Guild_Id_0"
+2019-08-01 19:01:14.558 -05:00 [Error] An exception bubbled up: 
+Discord.Commands.CommandException: Error occurred executing "GetModules" for Foxtrek_64#3858 in MODiX Demo/bot-spam. ---> System.InvalidOperationException: Could not locate any system modules. Contact the bot owner immediately.
+   at MajorInteractiveBot.Extensions.StringExtensions.OrElse(String left, Exception ex, Boolean whiteSpaceIsEmpty) in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Extensions\StringExtensions.cs:line 28
+   at MajorInteractiveBot.Modules.GuildModule.ModulesModule.GetModules() in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Modules\GuildModule.cs:line 409
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_0.<<BuildCommand>g__ExecuteCallback|0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Discord.Commands.CommandInfo.ExecuteInternalAsync(ICommandContext context, Object[] args, IServiceProvider services)
+   --- End of inner exception stack trace ---
+2019-08-01 19:01:15.032 -05:00 [Warning] 19:01:15 Gateway     A MessageReceived handler is blocking the gateway task.
+2019-08-01 19:01:15.168 -05:00 [Fatal] Could not locate any system modules. Contact the bot owner immediately.
+2019-08-01 19:02:01.227 -05:00 [Information] Stopping bot service.
+2019-08-01 19:02:41.501 -05:00 [Information] Starting bot...
+2019-08-01 19:02:41.661 -05:00 [Information] Starting behaviors.
+2019-08-01 19:02:41.665 -05:00 [Information] Loading Type Readers.
+2019-08-01 19:02:41.675 -05:00 [Information] Loading command modules.
+2019-08-01 19:02:41.801 -05:00 [Information] 7 modules loaded, containing 24 commands
+2019-08-01 19:02:41.815 -05:00 [Information] Logging into Discord and starting the client.
+2019-08-01 19:02:41.852 -05:00 [Information] 19:02:41 Discord     Discord.Net v2.1.1 (API v6)
+2019-08-01 19:02:42.978 -05:00 [Information] Discord client started successfully.
+2019-08-01 19:02:42.995 -05:00 [Information] 19:02:42 Gateway     Connecting
+2019-08-01 19:02:43.924 -05:00 [Information] 19:02:43 Gateway     Connected
+2019-08-01 19:02:45.516 -05:00 [Information] Entity Framework Core "2.2.6-servicing-10079" initialized '"MajorContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None"
+2019-08-01 19:02:46.897 -05:00 [Information] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT g.\"GuildId\", g.\"BotManager\", g.\"CommandPrefix\", g.\"GreetUser\", g.\"GreetingChannel\", g.\"GreetingMessage\"
+FROM \"Guilds\" AS g"
+2019-08-01 19:02:47.084 -05:00 [Information] 19:02:47 Gateway     Ready
+2019-08-01 19:04:12.435 -05:00 [Information] Executed DbCommand ("15"ms) [Parameters=["@__Context_Guild_Id_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"GuildId\", x.\"ModuleName\", x.\"Enabled\"
+FROM \"Modules\" AS x
+WHERE x.\"GuildId\" = @__Context_Guild_Id_0"
+2019-08-01 19:04:24.056 -05:00 [Error] An exception bubbled up: 
+Discord.Commands.CommandException: Error occurred executing "GetModules" for Foxtrek_64#3858 in MODiX Demo/bot-spam. ---> System.InvalidOperationException: Could not locate any system modules. Contact the bot owner immediately.
+   at MajorInteractiveBot.Extensions.StringExtensions.OrElse(String left, Exception ex, Boolean whiteSpaceIsEmpty) in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Extensions\StringExtensions.cs:line 28
+   at MajorInteractiveBot.Modules.GuildModule.ModulesModule.GetModules() in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Modules\GuildModule.cs:line 408
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_0.<<BuildCommand>g__ExecuteCallback|0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Discord.Commands.CommandInfo.ExecuteInternalAsync(ICommandContext context, Object[] args, IServiceProvider services)
+   --- End of inner exception stack trace ---
+2019-08-01 19:04:24.215 -05:00 [Warning] 19:04:24 Gateway     A MessageReceived handler is blocking the gateway task.
+2019-08-01 19:04:24.362 -05:00 [Fatal] Could not locate any system modules. Contact the bot owner immediately.
+2019-08-01 19:17:08.170 -05:00 [Information] Starting bot...
+2019-08-01 19:17:08.342 -05:00 [Information] Starting behaviors.
+2019-08-01 19:17:08.346 -05:00 [Information] Loading Type Readers.
+2019-08-01 19:17:08.356 -05:00 [Information] Loading command modules.
+2019-08-01 19:17:08.511 -05:00 [Information] 7 modules loaded, containing 24 commands
+2019-08-01 19:17:08.540 -05:00 [Information] Logging into Discord and starting the client.
+2019-08-01 19:17:08.591 -05:00 [Information] 19:17:08 Discord     Discord.Net v2.1.1 (API v6)
+2019-08-01 19:17:09.715 -05:00 [Information] Discord client started successfully.
+2019-08-01 19:17:09.733 -05:00 [Information] 19:17:09 Gateway     Connecting
+2019-08-01 19:17:11.029 -05:00 [Information] 19:17:11 Gateway     Connected
+2019-08-01 19:17:12.609 -05:00 [Information] Entity Framework Core "2.2.6-servicing-10079" initialized '"MajorContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None"
+2019-08-01 19:17:13.951 -05:00 [Information] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT g.\"GuildId\", g.\"BotManager\", g.\"CommandPrefix\", g.\"GreetUser\", g.\"GreetingChannel\", g.\"GreetingMessage\"
+FROM \"Guilds\" AS g"
+2019-08-01 19:17:14.143 -05:00 [Information] 19:17:14 Gateway     Ready
+2019-08-01 19:17:19.325 -05:00 [Information] Executed DbCommand ("15"ms) [Parameters=["@__Context_Guild_Id_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"GuildId\", x.\"ModuleName\", x.\"Enabled\"
+FROM \"Modules\" AS x
+WHERE x.\"GuildId\" = @__Context_Guild_Id_0"
+2019-08-01 19:17:24.619 -05:00 [Error] An exception bubbled up: 
+Discord.Commands.CommandException: Error occurred executing "GetModules" for Foxtrek_64#3858 in MODiX Demo/bot-spam. ---> System.InvalidOperationException: Could not locate any system modules. Contact the bot owner immediately.
+   at MajorInteractiveBot.Extensions.StringExtensions.OrElse(String left, Exception ex, Boolean whiteSpaceIsEmpty) in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Extensions\StringExtensions.cs:line 28
+   at MajorInteractiveBot.Modules.GuildModule.ModulesModule.GetModules() in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Modules\GuildModule.cs:line 408
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_0.<<BuildCommand>g__ExecuteCallback|0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Discord.Commands.CommandInfo.ExecuteInternalAsync(ICommandContext context, Object[] args, IServiceProvider services)
+   --- End of inner exception stack trace ---
+2019-08-01 19:17:24.774 -05:00 [Warning] 19:17:24 Gateway     A MessageReceived handler is blocking the gateway task.
+2019-08-01 19:17:24.967 -05:00 [Fatal] Could not locate any system modules. Contact the bot owner immediately.
+2019-08-01 19:26:32.977 -05:00 [Information] Stopping bot service.
+2019-08-01 19:52:11.617 -05:00 [Information] Starting bot...
+2019-08-01 19:52:11.795 -05:00 [Information] Starting behaviors.
+2019-08-01 19:52:11.798 -05:00 [Information] Loading Type Readers.
+2019-08-01 19:52:11.807 -05:00 [Information] Loading command modules.
+2019-08-01 19:52:11.947 -05:00 [Information] 7 modules loaded, containing 24 commands
+2019-08-01 19:52:11.968 -05:00 [Information] Logging into Discord and starting the client.
+2019-08-01 19:52:12.008 -05:00 [Information] 19:52:12 Discord     Discord.Net v2.1.1 (API v6)
+2019-08-01 19:52:13.240 -05:00 [Information] Discord client started successfully.
+2019-08-01 19:52:13.258 -05:00 [Information] 19:52:13 Gateway     Connecting
+2019-08-01 19:52:14.290 -05:00 [Information] 19:52:14 Gateway     Connected
+2019-08-01 19:52:15.860 -05:00 [Information] Entity Framework Core "2.2.6-servicing-10079" initialized '"MajorContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None"
+2019-08-01 19:52:17.212 -05:00 [Information] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT g.\"GuildId\", g.\"BotManager\", g.\"CommandPrefix\", g.\"GreetUser\", g.\"GreetingChannel\", g.\"GreetingMessage\"
+FROM \"Guilds\" AS g"
+2019-08-01 19:52:17.410 -05:00 [Information] 19:52:17 Gateway     Ready
+2019-08-01 19:52:23.839 -05:00 [Information] Executed DbCommand ("13"ms) [Parameters=["@__Context_Guild_Id_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"GuildId\", x.\"ModuleName\", x.\"Enabled\"
+FROM \"Modules\" AS x
+WHERE x.\"GuildId\" = @__Context_Guild_Id_0"
+2019-08-01 19:52:25.781 -05:00 [Error] An exception bubbled up: 
+Discord.Commands.CommandException: Error occurred executing "GetModules" for Foxtrek_64#3858 in MODiX Demo/bot-spam. ---> System.InvalidOperationException: Could not locate any system modules. Contact the bot owner immediately.
+   at MajorInteractiveBot.Extensions.StringExtensions.OrElse(String left, Exception ex, Boolean whiteSpaceIsEmpty) in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Extensions\StringExtensions.cs:line 28
+   at MajorInteractiveBot.Modules.GuildModule.ModulesModule.GetModules() in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Modules\GuildModule.cs:line 409
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_0.<<BuildCommand>g__ExecuteCallback|0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Discord.Commands.CommandInfo.ExecuteInternalAsync(ICommandContext context, Object[] args, IServiceProvider services)
+   --- End of inner exception stack trace ---
+2019-08-01 19:52:26.203 -05:00 [Fatal] Could not locate any system modules. Contact the bot owner immediately.
+2019-08-01 19:52:52.685 -05:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@__Context_Guild_Id_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"GuildId\", x.\"ModuleName\", x.\"Enabled\"
+FROM \"Modules\" AS x
+WHERE x.\"GuildId\" = @__Context_Guild_Id_0"
+2019-08-01 19:55:48.389 -05:00 [Information] Starting bot...
+2019-08-01 19:55:48.509 -05:00 [Information] Starting behaviors.
+2019-08-01 19:55:48.512 -05:00 [Information] Loading Type Readers.
+2019-08-01 19:55:48.519 -05:00 [Information] Loading command modules.
+2019-08-01 19:55:48.625 -05:00 [Information] 7 modules loaded, containing 24 commands
+2019-08-01 19:55:48.640 -05:00 [Information] Logging into Discord and starting the client.
+2019-08-01 19:55:48.671 -05:00 [Information] 19:55:48 Discord     Discord.Net v2.1.1 (API v6)
+2019-08-01 19:55:49.868 -05:00 [Information] Discord client started successfully.
+2019-08-01 19:55:49.887 -05:00 [Information] 19:55:49 Gateway     Connecting
+2019-08-01 19:55:50.837 -05:00 [Information] 19:55:50 Gateway     Connected
+2019-08-01 19:55:52.376 -05:00 [Information] Entity Framework Core "2.2.6-servicing-10079" initialized '"MajorContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None"
+2019-08-01 19:55:53.738 -05:00 [Information] Executed DbCommand ("21"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT g.\"GuildId\", g.\"BotManager\", g.\"CommandPrefix\", g.\"GreetUser\", g.\"GreetingChannel\", g.\"GreetingMessage\"
+FROM \"Guilds\" AS g"
+2019-08-01 19:55:53.932 -05:00 [Information] 19:55:53 Gateway     Ready
+2019-08-01 19:55:58.118 -05:00 [Information] Executed DbCommand ("15"ms) [Parameters=["@__Context_Guild_Id_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"GuildId\", x.\"ModuleName\", x.\"Enabled\"
+FROM \"Modules\" AS x
+WHERE x.\"GuildId\" = @__Context_Guild_Id_0"
+2019-08-01 19:55:58.427 -05:00 [Error] An exception bubbled up: 
+Discord.Commands.CommandException: Error occurred executing "GetModules" for Foxtrek_64#3858 in MODiX Demo/bot-spam. ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: input
+   at System.Text.RegularExpressions.Regex.Replace(String input, MatchEvaluator evaluator)
+   at System.Text.RegularExpressions.Regex.Replace(String input, String pattern, MatchEvaluator evaluator)
+   at MajorInteractiveBot.Modules.GuildModule.ModulesModule.<>c.<GetModules>b__3_2(ModuleInfo z) in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Modules\GuildModule.cs:line 399
+   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at MajorInteractiveBot.Modules.GuildModule.ModulesModule.GetModules() in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Modules\GuildModule.cs:line 396
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_0.<<BuildCommand>g__ExecuteCallback|0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Discord.Commands.CommandInfo.ExecuteInternalAsync(ICommandContext context, Object[] args, IServiceProvider services)
+   --- End of inner exception stack trace ---
+2019-08-01 19:55:58.763 -05:00 [Fatal] Value cannot be null.
+Parameter name: input
+2019-08-01 19:57:20.317 -05:00 [Information] Executed DbCommand ("2"ms) [Parameters=["@__Context_Guild_Id_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"GuildId\", x.\"ModuleName\", x.\"Enabled\"
+FROM \"Modules\" AS x
+WHERE x.\"GuildId\" = @__Context_Guild_Id_0"
+2019-08-01 19:58:38.334 -05:00 [Warning] 19:58:38 Gateway     System.Exception: Server missed last heartbeat
+   at Discord.ConnectionManager.<>c__DisplayClass29_0.<<StartAsync>b__0>d.MoveNext()
+2019-08-01 19:58:39.695 -05:00 [Information] 19:58:39 Gateway     Disconnecting
+2019-08-01 19:59:23.546 -05:00 [Error] An exception bubbled up: 
+Discord.Commands.CommandException: Error occurred executing "GetModules" for Foxtrek_64#3858 in MODiX Demo/bot-spam. ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: input
+   at System.Text.RegularExpressions.Regex.Replace(String input, MatchEvaluator evaluator)
+   at System.Text.RegularExpressions.Regex.Replace(String input, String pattern, MatchEvaluator evaluator)
+   at MajorInteractiveBot.Modules.GuildModule.ModulesModule.<>c.<GetModules>b__3_2(ModuleInfo z) in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Modules\GuildModule.cs:line 399
+   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at MajorInteractiveBot.Modules.GuildModule.ModulesModule.GetModules() in C:\Users\Foxtrek_64\Documents\Projects\LuzFaltex\MajorInteractiveBot\MajorInteractiveBot\Modules\GuildModule.cs:line 396
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_0.<<BuildCommand>g__ExecuteCallback|0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Discord.Commands.CommandInfo.ExecuteInternalAsync(ICommandContext context, Object[] args, IServiceProvider services)
+   --- End of inner exception stack trace ---
+2019-08-01 19:59:23.586 -05:00 [Warning] 19:59:23 Gateway     A MessageReceived handler is blocking the gateway task.
+2019-08-01 19:59:23.779 -05:00 [Fatal] Value cannot be null.
+Parameter name: input
+2019-08-01 19:59:23.818 -05:00 [Information] The bot disconnected unexpectedly. Stopping the application.
+System.Exception: Server missed last heartbeat
+   at Discord.ConnectionManager.<>c__DisplayClass29_0.<<StartAsync>b__0>d.MoveNext()
+2019-08-01 19:59:23.835 -05:00 [Information] 19:59:23 Gateway     Disconnected
+2019-08-01 19:59:23.855 -05:00 [Information] Stopping bot service.
+2019-08-01 19:59:25.910 -05:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT g.\"GuildId\", g.\"BotManager\", g.\"CommandPrefix\", g.\"GreetUser\", g.\"GreetingChannel\", g.\"GreetingMessage\"
+FROM \"Guilds\" AS g"
+2019-08-01 19:59:25.928 -05:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT g.\"GuildId\", g.\"BotManager\", g.\"CommandPrefix\", g.\"GreetUser\", g.\"GreetingChannel\", g.\"GreetingMessage\"
+FROM \"Guilds\" AS g"
+2019-08-01 20:02:07.243 -05:00 [Information] Starting bot...
+2019-08-01 20:02:07.372 -05:00 [Information] Starting behaviors.
+2019-08-01 20:02:07.375 -05:00 [Information] Loading Type Readers.
+2019-08-01 20:02:07.382 -05:00 [Information] Loading command modules.
+2019-08-01 20:02:07.568 -05:00 [Information] 7 modules loaded, containing 24 commands
+2019-08-01 20:02:07.584 -05:00 [Information] Logging into Discord and starting the client.
+2019-08-01 20:02:07.622 -05:00 [Information] 20:02:07 Discord     Discord.Net v2.1.1 (API v6)
+2019-08-01 20:02:08.804 -05:00 [Information] Discord client started successfully.
+2019-08-01 20:02:08.821 -05:00 [Information] 20:02:08 Gateway     Connecting
+2019-08-01 20:02:09.807 -05:00 [Information] 20:02:09 Gateway     Connected
+2019-08-01 20:02:11.348 -05:00 [Information] Entity Framework Core "2.2.6-servicing-10079" initialized '"MajorContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None"
+2019-08-01 20:02:11.884 -05:00 [Error] An error occurred using the connection to database '"majordev"' on server '"tcp://lfd-postgres01.luzfaltex.com:5432"'.
+System.Net.Sockets.SocketException (11001): No such host is known
+   at System.Net.Dns.HostResolutionEndHelper(IAsyncResult asyncResult)
+   at System.Net.Dns.EndGetHostAddresses(IAsyncResult asyncResult)
+   at System.Net.Dns.<>c.<GetHostAddressesAsync>b__25_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at Npgsql.TaskExtensions.WithCancellation[T](Task`1 task, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken) in C:\projects\npgsql\src\Npgsql\NpgsqlConnector.cs:line 748
+   at Npgsql.NpgsqlConnector.RawOpen(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken) in C:\projects\npgsql\src\Npgsql\NpgsqlConnector.cs:line 550
+   at Npgsql.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken) in C:\projects\npgsql\src\Npgsql\NpgsqlConnector.cs:line 414
+   at Npgsql.ConnectorPool.AllocateLong(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken) in C:\projects\npgsql\src\Npgsql\ConnectorPool.cs:line 246
+   at Npgsql.NpgsqlConnection.<>c__DisplayClass32_0.<<Open>g__OpenLong|0>d.MoveNext() in C:\projects\npgsql\src\Npgsql\NpgsqlConnection.cs:line 301
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnectionAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+2019-08-01 20:02:12.144 -05:00 [Error] An exception occurred while iterating over the results of a query for context type '"MajorInteractiveBot.Data.MajorContext"'."
+""System.Net.Sockets.SocketException (11001): No such host is known
+   at System.Net.Dns.HostResolutionEndHelper(IAsyncResult asyncResult)
+   at System.Net.Dns.EndGetHostAddresses(IAsyncResult asyncResult)
+   at System.Net.Dns.<>c.<GetHostAddressesAsync>b__25_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at Npgsql.TaskExtensions.WithCancellation[T](Task`1 task, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken) in C:\projects\npgsql\src\Npgsql\NpgsqlConnector.cs:line 748
+   at Npgsql.NpgsqlConnector.RawOpen(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken) in C:\projects\npgsql\src\Npgsql\NpgsqlConnector.cs:line 550
+   at Npgsql.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken) in C:\projects\npgsql\src\Npgsql\NpgsqlConnector.cs:line 414
+   at Npgsql.ConnectorPool.AllocateLong(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken) in C:\projects\npgsql\src\Npgsql\ConnectorPool.cs:line 246
+   at Npgsql.NpgsqlConnection.<>c__DisplayClass32_0.<<Open>g__OpenLong|0>d.MoveNext() in C:\projects\npgsql\src\Npgsql\NpgsqlConnection.cs:line 301
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnectionAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncQueryingEnumerable`1.AsyncEnumerator.BufferlessMoveNext(DbContext _, Boolean buffer, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken) in C:\projects\npgsql-entityframeworkcore-postgresql\src\EFCore.PG\Storage\Internal\NpgsqlExecutionStrategy.cs:line 49
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNext(CancellationToken cancellationToken)
+   at System.Linq.AsyncEnumerable.SelectEnumerableAsyncIterator`2.MoveNextCore(CancellationToken cancellationToken) in D:\a\1\s\Ix.NET\Source\System.Interactive.Async\Select.cs:line 106
+   at System.Linq.AsyncEnumerable.AsyncIterator`1.MoveNext(CancellationToken cancellationToken) in D:\a\1\s\Ix.NET\Source\System.Interactive.Async\AsyncIterator.cs:line 98
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncLinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext(CancellationToken cancellationToken)"
+System.Net.Sockets.SocketException (11001): No such host is known
+   at System.Net.Dns.HostResolutionEndHelper(IAsyncResult asyncResult)
+   at System.Net.Dns.EndGetHostAddresses(IAsyncResult asyncResult)
+   at System.Net.Dns.<>c.<GetHostAddressesAsync>b__25_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at Npgsql.TaskExtensions.WithCancellation[T](Task`1 task, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken) in C:\projects\npgsql\src\Npgsql\NpgsqlConnector.cs:line 748
+   at Npgsql.NpgsqlConnector.RawOpen(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken) in C:\projects\npgsql\src\Npgsql\NpgsqlConnector.cs:line 550
+   at Npgsql.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken) in C:\projects\npgsql\src\Npgsql\NpgsqlConnector.cs:line 414
+   at Npgsql.ConnectorPool.AllocateLong(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken) in C:\projects\npgsql\src\Npgsql\ConnectorPool.cs:line 246
+   at Npgsql.NpgsqlConnection.<>c__DisplayClass32_0.<<Open>g__OpenLong|0>d.MoveNext() in C:\projects\npgsql\src\Npgsql\NpgsqlConnection.cs:line 301
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnectionAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncQueryingEnumerable`1.AsyncEnumerator.BufferlessMoveNext(DbContext _, Boolean buffer, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken) in C:\projects\npgsql-entityframeworkcore-postgresql\src\EFCore.PG\Storage\Internal\NpgsqlExecutionStrategy.cs:line 49
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNext(CancellationToken cancellationToken)
+   at System.Linq.AsyncEnumerable.SelectEnumerableAsyncIterator`2.MoveNextCore(CancellationToken cancellationToken) in D:\a\1\s\Ix.NET\Source\System.Interactive.Async\Select.cs:line 106
+   at System.Linq.AsyncEnumerable.AsyncIterator`1.MoveNext(CancellationToken cancellationToken) in D:\a\1\s\Ix.NET\Source\System.Interactive.Async\AsyncIterator.cs:line 98
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncLinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext(CancellationToken cancellationToken)
+2019-08-01 20:02:12.244 -05:00 [Warning] 20:02:12 Gateway     A Ready handler has thrown an unhandled exception.:
+System.Net.Sockets.SocketException (11001): No such host is known
+   at System.Net.Dns.HostResolutionEndHelper(IAsyncResult asyncResult)
+   at System.Net.Dns.EndGetHostAddresses(IAsyncResult asyncResult)
+   at System.Net.Dns.<>c.<GetHostAddressesAsync>b__25_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at Npgsql.TaskExtensions.WithCancellation[T](Task`1 task, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken) in C:\projects\npgsql\src\Npgsql\NpgsqlConnector.cs:line 748
+   at Npgsql.NpgsqlConnector.RawOpen(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken) in C:\projects\npgsql\src\Npgsql\NpgsqlConnector.cs:line 550
+   at Npgsql.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken) in C:\projects\npgsql\src\Npgsql\NpgsqlConnector.cs:line 414
+   at Npgsql.ConnectorPool.AllocateLong(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken) in C:\projects\npgsql\src\Npgsql\ConnectorPool.cs:line 246
+   at Npgsql.NpgsqlConnection.<>c__DisplayClass32_0.<<Open>g__OpenLong|0>d.MoveNext() in C:\projects\npgsql\src\Npgsql\NpgsqlConnection.cs:line 301
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnectionAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncQueryingEnumerable`1.AsyncEnumerator.BufferlessMoveNext(DbContext _, Boolean buffer, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken) in C:\projects\npgsql-entityframeworkcore-postgresql\src\EFCore.PG\Storage\Internal\NpgsqlExecutionStrategy.cs:line 49
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNext(CancellationToken cancellationToken)
+   at System.Linq.AsyncEnumerable.SelectEnumerableAsyncIterator`2.MoveNextCore(CancellationToken cancellationToken) in D:\a\1\s\Ix.NET\Source\System.Interactive.Async\Select.cs:line 106
+   at System.Linq.AsyncEnumerable.AsyncIterator`1.MoveNext(CancellationToken cancellationToken) in D:\a\1\s\Ix.NET\Source\System.Interactive.Async\AsyncIterator.cs:line 98
+   at Microsoft.EntityFrameworkCore.Query.Internal.AsyncLinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext(CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.LoadAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Discord.EventExtensions.InvokeAsync(AsyncEvent`1 eventHandler)
+   at Discord.WebSocket.DiscordSocketClient.TimeoutWrap(String name, Func`1 action)
+2019-08-01 20:02:12.294 -05:00 [Information] 20:02:12 Gateway     Ready
+2019-08-01 20:02:45.306 -05:00 [Information] Stopping bot service.
+2019-08-01 20:02:56.364 -05:00 [Information] Starting bot...
+2019-08-01 20:02:56.516 -05:00 [Information] Starting behaviors.
+2019-08-01 20:02:56.520 -05:00 [Information] Loading Type Readers.
+2019-08-01 20:02:56.531 -05:00 [Information] Loading command modules.
+2019-08-01 20:02:56.658 -05:00 [Information] 7 modules loaded, containing 24 commands
+2019-08-01 20:02:56.680 -05:00 [Information] Logging into Discord and starting the client.
+2019-08-01 20:02:56.711 -05:00 [Information] 20:02:56 Discord     Discord.Net v2.1.1 (API v6)
+2019-08-01 20:02:57.943 -05:00 [Information] Discord client started successfully.
+2019-08-01 20:02:57.966 -05:00 [Information] 20:02:57 Gateway     Connecting
+2019-08-01 20:02:59.025 -05:00 [Information] 20:02:59 Gateway     Connected
+2019-08-01 20:03:00.571 -05:00 [Information] Entity Framework Core "2.2.6-servicing-10079" initialized '"MajorContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None"
+2019-08-01 20:03:01.931 -05:00 [Information] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT g.\"GuildId\", g.\"BotManager\", g.\"CommandPrefix\", g.\"GreetUser\", g.\"GreetingChannel\", g.\"GreetingMessage\"
+FROM \"Guilds\" AS g"
+2019-08-01 20:03:02.109 -05:00 [Information] 20:03:02 Gateway     Ready
+2019-08-01 20:03:07.191 -05:00 [Information] Executed DbCommand ("17"ms) [Parameters=["@__Context_Guild_Id_0='?' (DbType = Decimal)"], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"GuildId\", x.\"ModuleName\", x.\"Enabled\"
+FROM \"Modules\" AS x
+WHERE x.\"GuildId\" = @__Context_Guild_Id_0"
+2019-08-01 20:03:31.793 -05:00 [Warning] 20:03:31 Gateway     A MessageReceived handler is blocking the gateway task.
+2019-08-01 20:03:46.252 -05:00 [Information] Stopping bot service.
+2019-08-01 20:35:27.802 -05:00 [Information] Starting bot...
+2019-08-01 20:35:27.970 -05:00 [Information] Starting behaviors.
+2019-08-01 20:35:27.973 -05:00 [Information] Loading Type Readers.
+2019-08-01 20:35:27.982 -05:00 [Information] Loading command modules.
+2019-08-01 20:35:28.136 -05:00 [Information] 7 modules loaded, containing 23 commands
+2019-08-01 20:35:28.155 -05:00 [Information] Logging into Discord and starting the client.
+2019-08-01 20:35:28.195 -05:00 [Information] 20:35:28 Discord     Discord.Net v2.1.1 (API v6)
+2019-08-01 20:35:29.394 -05:00 [Information] Discord client started successfully.
+2019-08-01 20:35:29.416 -05:00 [Information] 20:35:29 Gateway     Connecting
+2019-08-01 20:35:30.406 -05:00 [Information] 20:35:30 Gateway     Connected
+2019-08-01 20:35:31.964 -05:00 [Information] Entity Framework Core "2.2.6-servicing-10079" initialized '"MajorContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None"
+2019-08-01 20:35:33.310 -05:00 [Information] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT g.\"GuildId\", g.\"BotManager\", g.\"CommandPrefix\", g.\"GreetUser\", g.\"GreetingChannel\", g.\"GreetingMessage\"
+FROM \"Guilds\" AS g"
+2019-08-01 20:35:33.498 -05:00 [Information] 20:35:33 Gateway     Ready
+2019-08-01 20:35:35.729 -05:00 [Information] Stopping bot service.
+2019-08-01 20:36:51.901 -05:00 [Information] Starting bot...
+2019-08-01 20:36:52.044 -05:00 [Information] Starting behaviors.
+2019-08-01 20:36:52.048 -05:00 [Information] Loading Type Readers.
+2019-08-01 20:36:52.056 -05:00 [Information] Loading command modules.
+2019-08-01 20:36:52.168 -05:00 [Information] 7 modules loaded, containing 23 commands
+2019-08-01 20:36:52.181 -05:00 [Information] Logging into Discord and starting the client.
+2019-08-01 20:36:52.212 -05:00 [Information] 20:36:52 Discord     Discord.Net v2.1.1 (API v6)
+2019-08-01 20:36:53.402 -05:00 [Information] Discord client started successfully.
+2019-08-01 20:36:53.426 -05:00 [Information] 20:36:53 Gateway     Connecting
+2019-08-01 20:36:54.426 -05:00 [Information] 20:36:54 Gateway     Connected
+2019-08-01 20:36:56.064 -05:00 [Information] Entity Framework Core "2.2.6-servicing-10079" initialized '"MajorContext"' using provider '"Npgsql.EntityFrameworkCore.PostgreSQL"' with options: "None"
+2019-08-01 20:36:57.442 -05:00 [Information] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT g.\"GuildId\", g.\"BotManager\", g.\"CommandPrefix\", g.\"GreetUser\", g.\"GreetingChannel\", g.\"GreetingMessage\"
+FROM \"Guilds\" AS g"
+2019-08-01 20:36:57.621 -05:00 [Information] 20:36:57 Gateway     Ready
+2019-08-01 20:37:12.863 -05:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT x.\"ModuleName\"
+FROM \"DisabledModules\" AS x"
+2019-08-01 20:37:13.032 -05:00 [Warning] 20:37:13 Gateway     A MessageReceived handler is blocking the gateway task.
+2019-08-01 20:37:32.414 -05:00 [Information] Stopping bot service.

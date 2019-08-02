@@ -11,5 +11,7 @@ namespace MajorInteractiveBot.Data.Models
         public bool GreetUser { get; set; }
         public ulong GreetingChannel { get; set; }
         public string GreetingMessage { get; set; }
+        public ulong BotManager { get; set; }
+        public ulong AdultRole { get; set; }
     }
 }

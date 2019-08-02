@@ -2,42 +2,23 @@
 using MajorInteractiveBot.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace MajorInteractiveBot.Data.Migrations
 {
     [DbContext(typeof(MajorContext))]
-    partial class MajorContextModelSnapshot : ModelSnapshot
+    [Migration("20190802013602_RemoveModuleEnabledBool")]
+    partial class RemoveModuleEnabledBool
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
-
-            modelBuilder.Entity("MajorInteractiveBot.Data.Models.AssignableRole", b =>
-                {
-                    b.Property<decimal>("RoleId")
-                        .ValueGeneratedOnAdd()
-                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
-
-                    b.Property<decimal>("GuildId")
-                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
-
-                    b.Property<int>("Position");
-
-                    b.Property<bool>("Require18Plus");
-
-                    b.Property<decimal>("RoleCategory")
-                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
-
-                    b.HasKey("RoleId");
-
-                    b.ToTable("AssignableRoles");
-                });
 
             modelBuilder.Entity("MajorInteractiveBot.Data.Models.CommandChannel", b =>
                 {
@@ -57,9 +38,6 @@ namespace MajorInteractiveBot.Data.Migrations
                 {
                     b.Property<decimal>("GuildId")
                         .ValueGeneratedOnAdd()
-                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
-
-                    b.Property<decimal>("AdultRole")
                         .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
 
                     b.Property<decimal>("BotManager")

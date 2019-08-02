@@ -3,6 +3,7 @@ using Discord.Commands;
 using MajorInteractiveBot.Attributes;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Net;
@@ -12,6 +13,7 @@ namespace MajorInteractiveBot.Modules
 {
     [Name("Animal")]
     [Summary("A collection of commands for displaying animals of the specified type.")]
+    [Module]
     public class AnimalModule : ModuleBase
     {
         private readonly ILogger<AnimalModule> Log;
@@ -26,9 +28,10 @@ namespace MajorInteractiveBot.Modules
         private const string FindBird = "https://random.birb.pw/tweet/";
         private const string BirdPicture = "https://random.birb.pw/img/{0}";
 
-        private const string CatPicture = "https://api.thecatapi.com/api/images/get?format=src&results_per_page=1";
+        private const string CatPicture = "https://api.thecatapi.com/v1/images/search";
 
         [Command("bird")]
+        [Alias("birb")]
         [Summary("Shows a random bird.")]
         [RequireCommandChannel]
         public async Task ShowBird()
@@ -43,7 +46,18 @@ namespace MajorInteractiveBot.Modules
         [RequireCommandChannel]
         public async Task ShowCat()
         {
-            await ShowPicture("cat", CatPicture);
+            string location = await GetJsonAsync(CatPicture, "url");
+            await ShowPicture("cat", location);
+        }
+
+        private async Task<string> GetJsonAsync(string uri, string key)
+        {
+            string json = await GetAsync(uri);
+
+            var jArray = JArray.Parse(json);
+            var jToken = jArray.First;
+
+            return jToken.Value<string>(key);            
         }
 
         private async Task ShowPicture(string type, string uri)

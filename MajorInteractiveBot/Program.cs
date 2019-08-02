@@ -1,4 +1,5 @@
-﻿using Discord.Commands;
+﻿using Discord.Addons.Interactive;
+using Discord.Commands;
 using Discord.WebSocket;
 using MajorInteractiveBot.Data;
 using MajorInteractiveBot.Data.Models;
@@ -39,9 +40,11 @@ namespace MajorInteractiveBot
                         builder.AddUserSecrets<MajorBot>();
                     }
                 })
-                .ConfigureLogging(builder =>
+                .ConfigureLogging((ctx, builder) =>
                 {
+                    var logMinimum = new Serilog.Core.LoggingLevelSwitch(ctx.HostingEnvironment.IsDevelopment() ? LogEventLevel.Debug : LogEventLevel.Information);
                     var seriLogger = new LoggerConfiguration()
+                    .MinimumLevel.ControlledBy(logMinimum)
                     .WriteTo.Console()
                     .WriteTo.RollingFile(@"logs\{date}", restrictedToMinimumLevel: LogEventLevel.Debug)
                     .CreateLogger();
@@ -60,6 +63,7 @@ namespace MajorInteractiveBot
                         .AddSingleton<DiscordSocketClient>()
                         .AddSingleton<CommandService>()
                         .AddSingleton<CommandHandler>()
+                        .AddSingleton<InteractiveService>()
                         .AddSingleton<ICommandHelpService, CommandHelpService>()
 
                         .AddHostedService<MajorBot>();

@@ -1,7 +1,6 @@
 ﻿using Discord;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Discord.WebSocket;
+using System.Linq;
 
 namespace MajorInteractiveBot.Extensions
 {
@@ -9,5 +8,11 @@ namespace MajorInteractiveBot.Extensions
     {
         public static string UsernameAndDiscrim(this IUser user)
             => $"{user.Username}#{user.Discriminator}";
+
+        public static string GetUserAvatarUrl(this IUser user)
+            => user.GetAvatarUrl() ?? user.GetDefaultAvatarUrl();
+
+        public static bool HasRole(this IGuildUser user, IRole role)
+            => user.RoleIds.Contains(role.Id);            
     }
 }
