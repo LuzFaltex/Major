@@ -78,6 +78,9 @@ namespace MajorInteractiveBot
                 // shutting down or being disposed.
                 stoppingToken.Register(OnStopping);
 
+                Log.LogInformation("Running database migrations.");
+                await _context.Database.MigrateAsync();
+
                 Log.LogInformation("Starting behaviors.");
                 // We don't have any rn
 
