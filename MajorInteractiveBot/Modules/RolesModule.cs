@@ -66,12 +66,27 @@ namespace MajorInteractiveBot.Modules
                 if (!roleMappings.TryGetValue(role.RoleCategory, out var list))
                     list = new List<AssignableRole>();
                 list.Add(role);
+                list.OrderByDescending(x => x.Position);
                 roleMappings[role.RoleCategory] = list;
             }            
 
             List<PaginatedMessage.Page> pages = new List<PaginatedMessage.Page>();
 
-            roleMappings.ForEach((k, v) => pages.Add(BuildPage(k, v)));
+            if (roleMappings.TryGetValue(Context.Guild.EveryoneRole.Id, out var generalCategory))
+            {
+                roleMappings.Remove(Context.Guild.EveryoneRole.Id);
+
+                pages.Add(BuildPage(Context.Guild.EveryoneRole.Id, generalCategory));
+            }
+
+            var orderedRoleMappings = roleMappings
+                    .OrderByDescending(x =>
+                        Context.Guild.GetRole(x.Key).Position);
+
+            foreach(var value in orderedRoleMappings)
+            {
+                pages.Add(BuildPage(value.Key, value.Value));
+            }
 
             var guild = await _dbContext.Guilds.FindAsync(Context.Guild.Id);
             var pager = new PaginatedMessage()
@@ -102,7 +117,6 @@ namespace MajorInteractiveBot.Modules
                 {
                     var roleName = Context.Guild.GetRole(role.RoleId).Name;
                     roleName += role.Require18Plus ? "*" : "";
-                    roleName += Environment.NewLine;
                     roleNames.Add(roleName);
                 }
 
@@ -110,7 +124,7 @@ namespace MajorInteractiveBot.Modules
                 var page = new PaginatedMessage.Page()
                 {
                     Title = "Category: " + categoryRole.Name.Replace("=", "").Trim(),
-                    Description = "Below are a list of roles you can assign yourself." + Environment.NewLine + string.Format(CodeBlock, roleNames)
+                    Description = "Below are a list of roles you can assign yourself. Roles marked with a * require the 18+ role." + Environment.NewLine + string.Format(CodeBlock, string.Join(Environment.NewLine, roleNames))
                 };
 
                 return page;
@@ -121,7 +135,7 @@ namespace MajorInteractiveBot.Modules
         [Alias("+")]
         [Summary("Add a role to yourself.")]
         [RequireContext(ContextType.Guild)]
-        public async Task AddRole(IRole role)
+        public async Task AddRole([Remainder] IRole role)
         {
             // first let's check if the role is assignable.
             if ((await _dbContext.AssignableRoles.FindAsync(role.Id)) is AssignableRole arole)
@@ -178,7 +192,7 @@ namespace MajorInteractiveBot.Modules
         [Alias("-")]
         [Summary("Removes a role from yourself.")]
         [RequireContext(ContextType.Guild)]
-        public async Task RemoveRole(IRole role)
+        public async Task RemoveRole([Remainder] IRole role)
         {
             // first let's check if the role is assignable.
             if ((await _dbContext.AssignableRoles.FindAsync(role.Id)) is AssignableRole arole)
