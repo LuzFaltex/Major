@@ -85,11 +85,9 @@ namespace MajorInteractiveBot
                 // We don't have any rn
 
                 Log.LogInformation("Loading Type Readers.");
-
                 _commands.AddTypeReader<ModuleInfo>(new ModuleTypeReader());
 
                 Log.LogInformation("Loading command modules.");
-
                 await _commands.AddModulesAsync(typeof(MajorBot).Assembly, _scope.ServiceProvider);
 
                 Log.LogInformation("{Modules} modules loaded, containing {Commands} commands", _commands.Modules.Count(), _commands.Modules.SelectMany(d => d.Commands).Count());

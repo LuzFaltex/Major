@@ -309,7 +309,9 @@ namespace MajorInteractiveBot.Modules
                     else
                     {
                         var commandService = _services.GetRequiredService<CommandService>();
-                        var typeReader = commandService.TypeReaders[typeof(SocketTextChannel)].First();
+                        var typeReader = commandService.TypeReaders[typeof(SocketTextChannel)]
+                            .FirstOrDefault()
+                            ?? new ChannelTypeReader<SocketTextChannel>();
 
                         var result = await typeReader.ReadAsync(Context, responseText, _services);
 
