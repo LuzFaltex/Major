@@ -32,7 +32,9 @@ namespace MajorInteractiveBot
         private readonly ILogger<MajorBot> Log;
         private readonly MajorContext _context;
         private readonly MajorConfig _applicationConfig;
-        
+
+        // How long should we wait on the client to reconnect before resetting?
+        private static readonly TimeSpan _timeout = TimeSpan.FromSeconds(30);
 
         public MajorBot(IServiceProvider services, MajorContext context)
         {
@@ -134,7 +136,7 @@ namespace MajorInteractiveBot
                 _client.LeftGuild -= LeftGuild;
                 _client.UserJoined -= UserJoined;
                 _client.UserLeft -= UserLeft;
-                _client.Ready += Ready;
+                _client.Ready -= Ready;
             }
         }
 
@@ -204,11 +206,51 @@ namespace MajorInteractiveBot
             await _context.SaveChangesAsync();
         }
 
-        private Task OnDisconnect(Exception ex)
+        private async Task OnDisconnect(Exception ex)
         {
-            Log.LogInformation(ex, "The bot disconnected unexpectedly. Stopping the application.");
-            _applicationLifetime.StopApplication();
-            return Task.CompletedTask;
+            Log.LogInformation(ex, "The bot disconnected unexpectedly. Attempting to restart the application.");
+            await Task.Delay(_timeout).ContinueWith(async _ =>
+            {
+                Log.LogDebug("Timeout expired, continuing to check client state...");
+                if (await CheckStateAsync())
+                    Log.LogDebug("State came back okay");
+            });
+
+            async Task<bool> CheckStateAsync()
+            {
+                // Client reconnected, no need to reset
+                if (_client.ConnectionState == ConnectionState.Connected) return true;
+
+                Log.LogInformation("Attempting to reset the client");
+
+                var timeout = Task.Delay(_timeout);
+                var connect = _client.StartAsync();
+                var task = await Task.WhenAny(timeout, connect);
+
+                if (connect.IsCompletedSuccessfully)
+                {
+                    Log.LogInformation("Client reset succesfully!");
+                    return true;
+                }
+                else if (task == timeout)
+                {
+                    Log.LogCritical("Client reset timed out (task deadlocked?), killing process");
+                    _applicationLifetime.StopApplication();
+                    return false;
+                }
+                else if (connect.IsFaulted)
+                {
+                    Log.LogCritical("Client reset faulted, killing process", connect.Exception);
+                    _applicationLifetime.StopApplication();
+                    return false;
+                }
+                else
+                {
+                    Log.LogCritical("Client did not reconnect in time, killing process");
+                    _applicationLifetime.StopApplication();
+                    return false;
+                }
+            }
         }
 
         public override void Dispose()
