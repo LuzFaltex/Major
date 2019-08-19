@@ -9,7 +9,7 @@ namespace MajorInteractiveBot.Extensions
         public static string UsernameAndDiscrim(this IUser user)
             => $"{user.Username}#{user.Discriminator}";
 
-        public static string GetUserAvatarUrl(this IUser user)
+        public static string GetAvatarUrlOrDefault(this IUser user)
             => user.GetAvatarUrl() ?? user.GetDefaultAvatarUrl();
 
         public static bool HasRole(this IGuildUser user, IRole role)
