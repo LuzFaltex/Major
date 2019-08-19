@@ -8,7 +8,7 @@ namespace MajorInteractiveBot.Extensions
         {
             builder.Footer = new EmbedFooterBuilder()
             {
-                IconUrl = user.GetAvatarUrl() ?? user.GetDefaultAvatarUrl(),
+                IconUrl = user.GetAvatarUrlOrDefault(),
                 Text = $"Requested by {user.UsernameAndDiscrim()}"
             };
             return builder;

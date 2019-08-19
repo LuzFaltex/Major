@@ -96,7 +96,7 @@ namespace MajorInteractiveBot
 
                 Log.LogInformation("Logging into Discord and starting the client.");
 
-                await StartClient(stoppingToken);
+                await StartClient();
 
                 Log.LogInformation("Discord client started successfully.");
 
@@ -224,7 +224,7 @@ namespace MajorInteractiveBot
                 Log.LogInformation("Attempting to reset the client");
 
                 var timeout = Task.Delay(_timeout);
-                var connect = _client.StartAsync();
+                var connect = StartClient();
                 var task = await Task.WhenAny(timeout, connect);
 
                 if (connect.IsCompletedSuccessfully)
@@ -268,7 +268,7 @@ namespace MajorInteractiveBot
             }            
         }
 
-        private async Task StartClient(CancellationToken cancellationToken)
+        private async Task StartClient()
         {
             try
             {
