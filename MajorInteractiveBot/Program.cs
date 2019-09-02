@@ -69,19 +69,30 @@ namespace MajorInteractiveBot
                         .AddHostedService<MajorBot>();
                 });
 
-            using (var built = hostBuilder.Build())
+            var built = hostBuilder.Build();
+
+            try
             {
-                try
+                await built.RunAsync();
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                Log.ForContext<Program>()
+                    .Fatal(ex, "Host terminated unexpectedly.");
+
+                if (Debugger.IsAttached && Environment.UserInteractive)
                 {
-                    await built.RunAsync();
-                    return 0;
+                    Console.WriteLine(Environment.NewLine + "Press any key to exit...");
+                    Console.ReadKey(true);
                 }
-                catch (Exception ex)
-                {
-                    Log.Fatal(ex, "The bot encountered an unexpected error.");
-                    return ex.HResult;
-                }
-            }            
+
+                return ex.HResult;
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
         }
     }
 }
