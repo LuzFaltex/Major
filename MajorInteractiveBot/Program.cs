@@ -19,8 +19,8 @@ namespace MajorInteractiveBot
 {
     public class Program
     {
-        public static Task Main() => new Program().MainAsync();
-        public async Task MainAsync()
+        public static Task<int> Main() => new Program().MainAsync();
+        public async Task<int> MainAsync()
         {
             var hostBuilder = new HostBuilder()
                 .ConfigureHostConfiguration(builder =>
@@ -69,9 +69,19 @@ namespace MajorInteractiveBot
                         .AddHostedService<MajorBot>();
                 });
 
-            var built = hostBuilder.Build();
-
-            await built.RunAsync();
+            using (var built = hostBuilder.Build())
+            {
+                try
+                {
+                    await built.RunAsync();
+                    return 0;
+                }
+                catch (Exception ex)
+                {
+                    Log.Fatal(ex, "The bot encountered an unexpected error.");
+                    return ex.HResult;
+                }
+            }            
         }
     }
 }
