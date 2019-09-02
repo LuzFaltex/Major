@@ -46,11 +46,17 @@ namespace MajorInteractiveBot.Modules
             var guild = await _config.Guilds.FindAsync(context.Guild.Id);
             var prefix = guild?.CommandPrefix ?? ".";
 
+            if (prefix.Equals(".") && message.Content.StartsWith("..")) return;
+
             if (message.HasStringPrefix(prefix, ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))
             {
                 // Execute command
-                Log.LogDebug("{Username} ran command '{Command}' in Guild {Guild}", context.User.UsernameAndDiscrim(), context.Message, context.Guild.Name);
                 var result = await _commands.ExecuteAsync(context, argPos, _services);
+
+                Log.Log(
+                    result.IsSuccess ? LogLevel.Debug : LogLevel.Warning, 
+                    "{Username} ran command '{Command}' in Guild {Guild}", 
+                    context.User.UsernameAndDiscrim(), context.Message, context.Guild.Name);
 
                 if (!result.IsSuccess)
                 {
@@ -67,7 +73,7 @@ namespace MajorInteractiveBot.Modules
                         case CommandError.BadArgCount:
                         case CommandError.UnknownCommand:
                             await message.AddReactionAsync(new Emoji("⚠"));
-                            Log.LogDebug(result.ErrorReason);
+                            Log.LogWarning(result.ErrorReason);
                             break;
                     }
                 }

@@ -19,8 +19,8 @@ namespace MajorInteractiveBot
 {
     public class Program
     {
-        public static Task Main() => new Program().MainAsync();
-        public async Task MainAsync()
+        public static Task<int> Main() => new Program().MainAsync();
+        public async Task<int> MainAsync()
         {
             var hostBuilder = new HostBuilder()
                 .ConfigureHostConfiguration(builder =>
@@ -71,7 +71,28 @@ namespace MajorInteractiveBot
 
             var built = hostBuilder.Build();
 
-            await built.RunAsync();
+            try
+            {
+                await built.RunAsync();
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                Log.ForContext<Program>()
+                    .Fatal(ex, "Host terminated unexpectedly.");
+
+                if (Debugger.IsAttached && Environment.UserInteractive)
+                {
+                    Console.WriteLine(Environment.NewLine + "Press any key to exit...");
+                    Console.ReadKey(true);
+                }
+
+                return ex.HResult;
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
         }
     }
 }

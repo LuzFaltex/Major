@@ -195,7 +195,7 @@ namespace MajorInteractiveBot.Modules
         public async Task RemoveRole([Remainder] IRole role)
         {
             // first let's check if the role is assignable.
-            if ((await _dbContext.AssignableRoles.FindAsync(role.Id)) is AssignableRole arole)
+            if ((await _dbContext.AssignableRoles.FindAsync(role.Id)) is AssignableRole)
             {
                 var guildUser = Context.User as SocketGuildUser;
 
