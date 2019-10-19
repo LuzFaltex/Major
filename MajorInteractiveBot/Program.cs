@@ -19,8 +19,7 @@ namespace MajorInteractiveBot
 {
     public class Program
     {
-        public static Task<int> Main() => new Program().MainAsync();
-        public async Task<int> MainAsync()
+        public static async Task<int> Main()
         {
             var hostBuilder = new HostBuilder()
                 .ConfigureHostConfiguration(builder =>
@@ -44,10 +43,10 @@ namespace MajorInteractiveBot
                 {
                     var logMinimum = new Serilog.Core.LoggingLevelSwitch(ctx.HostingEnvironment.IsDevelopment() ? LogEventLevel.Debug : LogEventLevel.Information);
                     var seriLogger = new LoggerConfiguration()
-                    .MinimumLevel.ControlledBy(logMinimum)
-                    .WriteTo.Console()
-                    .WriteTo.RollingFile(@"logs\{date}", restrictedToMinimumLevel: LogEventLevel.Debug)
-                    .CreateLogger();
+                        .MinimumLevel.ControlledBy(logMinimum)
+                        .WriteTo.Console()
+                        .WriteTo.RollingFile(@"logs\{date}", restrictedToMinimumLevel: LogEventLevel.Debug)
+                        .CreateLogger();
 
                     builder.AddSerilog(seriLogger);
                 })
@@ -69,7 +68,8 @@ namespace MajorInteractiveBot
                         .AddHostedService<MajorBot>();
                 });
 
-            var built = hostBuilder.Build();
+            // Ensure disposal at the end of the Main() block
+            using var built = hostBuilder.Build();
 
             try
             {

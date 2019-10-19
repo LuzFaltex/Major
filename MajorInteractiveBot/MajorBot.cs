@@ -24,6 +24,7 @@ namespace MajorInteractiveBot
     public class MajorBot : BackgroundService
     {
         private readonly DiscordSocketClient _client;
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Code Quality", "IDE0069:Disposable fields should be disposed", Justification = "CommandService is automatically disposed when the Service is disposed.")]
         private readonly CommandService _commands;
         private readonly IServiceProvider _provider;
         private readonly IApplicationLifetime _applicationLifetime;
@@ -49,7 +50,7 @@ namespace MajorInteractiveBot
             Log = _provider.GetRequiredService<ILogger<MajorBot>>();
 
             // Just construct it so we have a concrete reference to it.
-           _provider.GetRequiredService<CommandHandler>();
+            _provider.GetRequiredService<CommandHandler>();
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -257,7 +258,7 @@ namespace MajorInteractiveBot
         {
             try
             {
-                // IF the service is currently running, this will cancel the cancellation token that was passed into
+                // If the service is currently running, this will cancel the cancellation token that was passed into
                 // our ExecuteAsync method, unregistering our event handlers for us.
                 base.Dispose();
             }
