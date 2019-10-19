@@ -24,12 +24,10 @@ namespace MajorInteractiveBot.Modules
     [RequireBotManager]
     public class GuildModule : ModuleBase
     {
-        private readonly ILogger Log;
         private readonly MajorContext _context;
 
-        public GuildModule(ILogger<GuildModule> log, MajorContext context)
+        public GuildModule(MajorContext context)
         {
-            Log = log;
             _context = context;
         }
 
@@ -172,10 +170,10 @@ namespace MajorInteractiveBot.Modules
         public class GreetingModule : InteractiveBase
         {
             private readonly MajorContext _context;
-            private readonly IHostingEnvironment _environment;
+            private readonly IHostEnvironment _environment;
             private readonly IServiceProvider _services;
 
-            public GreetingModule(MajorContext context, IHostingEnvironment environment, IServiceProvider services)
+            public GreetingModule(MajorContext context, IHostEnvironment environment, IServiceProvider services)
             {
                 _context = context;
                 _environment = environment;
@@ -227,7 +225,6 @@ namespace MajorInteractiveBot.Modules
             public async Task SetGreetingMessage([NotNullOrWhiteSpace] string newMessage)
             {
                 var guild = await _context.Guilds.FindAsync(Context.Guild.Id);
-                var oldMessage = string.IsNullOrWhiteSpace(guild.GreetingMessage) ? "Undefined" : guild.GreetingMessage;
                 guild.GreetingMessage = newMessage;
                 await _context.SaveChangesAsync();
                 await Context.AddConfirmation();
