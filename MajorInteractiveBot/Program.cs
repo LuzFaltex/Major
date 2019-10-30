@@ -69,7 +69,7 @@ namespace MajorInteractiveBot
                 });
 
             // Ensure disposal at the end of the Main() block
-            using var built = hostBuilder.Build();
+            using IHost built = hostBuilder.Build();
 
             try
             {

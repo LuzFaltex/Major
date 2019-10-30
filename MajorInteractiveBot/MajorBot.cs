@@ -27,7 +27,7 @@ namespace MajorInteractiveBot
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Code Quality", "IDE0069:Disposable fields should be disposed", Justification = "CommandService is automatically disposed when the Service is disposed.")]
         private readonly CommandService _commands;
         private readonly IServiceProvider _provider;
-        private readonly IApplicationLifetime _applicationLifetime;
+        private readonly IHostApplicationLifetime _applicationLifetime;
         private readonly DiscordSerilogAdapter _serilogAdapter;
         private IServiceScope _scope;
         private readonly ILogger<MajorBot> Log;
@@ -45,7 +45,7 @@ namespace MajorInteractiveBot
             _applicationConfig = _provider.GetRequiredService<IOptions<MajorConfig>>().Value;
             _client = _provider.GetRequiredService<DiscordSocketClient>();
             _commands = _provider.GetRequiredService<CommandService>();
-            _applicationLifetime = _provider.GetRequiredService<IApplicationLifetime>();
+            _applicationLifetime = _provider.GetRequiredService<IHostApplicationLifetime>();
             _serilogAdapter = new DiscordSerilogAdapter(_provider.GetRequiredService<ILogger<DiscordSerilogAdapter>>());
             Log = _provider.GetRequiredService<ILogger<MajorBot>>();
 

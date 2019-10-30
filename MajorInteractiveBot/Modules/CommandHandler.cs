@@ -49,7 +49,7 @@ namespace MajorInteractiveBot.Modules
             if (message.HasStringPrefix(prefix, ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))
             {
                 // Execute command
-                var result = await _commands.ExecuteAsync(context, argPos, _services);
+                IResult result = await _commands.ExecuteAsync(context, argPos, _services);
 
                 Log.Log(
                     result.IsSuccess ? LogLevel.Debug : LogLevel.Warning, 
