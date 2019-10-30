@@ -50,7 +50,7 @@ namespace MajorInteractiveBot.Modules
         [Summary("Provides a listing of the roles a user can subscribe to.")]
         public async Task ListRoles()
         {
-            Dictionary<ulong, List<AssignableRole>> roleMappings = new Dictionary<ulong, List<AssignableRole>>();
+            var roleMappings = new Dictionary<ulong, List<AssignableRole>>();
             var roles = _dbContext.AssignableRoles
                 .Where(x => x.GuildId == Context.Guild.Id)
                 .ToArray();
@@ -70,7 +70,7 @@ namespace MajorInteractiveBot.Modules
                 roleMappings[role.RoleCategory] = list;
             }            
 
-            List<PaginatedMessage.Page> pages = new List<PaginatedMessage.Page>();
+            var pages = new List<PaginatedMessage.Page>();
 
             if (roleMappings.TryGetValue(Context.Guild.EveryoneRole.Id, out var generalCategory))
             {
