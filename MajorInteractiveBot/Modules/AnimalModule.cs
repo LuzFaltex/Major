@@ -1,12 +1,14 @@
 ﻿using Discord;
 using Discord.Commands;
 using MajorInteractiveBot.Attributes;
+using MajorInteractiveBot.Services.ImageService;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace MajorInteractiveBot.Modules
@@ -14,20 +16,19 @@ namespace MajorInteractiveBot.Modules
     [Name("Animal")]
     [Summary("A collection of commands for displaying animals of the specified type.")]
     [Module]
-    public class AnimalModule : ModuleBase
+    public sealed class AnimalModule : ModuleBase
     {
-        private readonly ILogger<AnimalModule> Log;
-        private readonly IServiceProvider _services;
+        private readonly ILogger Log;
+        private readonly ImageService _imageService;
 
-        public AnimalModule(IServiceProvider services)
+        public AnimalModule(ILogger<AnimalModule> logger, ImageService imageService)
         {
-            _services = services;
-            Log = services.GetRequiredService<ILogger<AnimalModule>>();
+            Log = logger;
+            _imageService = imageService;
         }
 
         private const string FindBird = "https://random.birb.pw/tweet/";
         private const string BirdPicture = "https://random.birb.pw/img/{0}";
-
         private const string CatPicture = "https://api.thecatapi.com/v1/images/search";
 
         [Command("bird")]
@@ -36,9 +37,10 @@ namespace MajorInteractiveBot.Modules
         [RequireCommandChannel]
         public async Task ShowBird()
         {
-            string location = await GetAsync(FindBird);
+            var message = await ReplyAsync("Searching for a bird...");
+            var result = await _imageService.FromBodyAsync(FindBird, BirdPicture);
 
-            await ShowPicture("bird", string.Format(BirdPicture, location));
+            await ShowPictureAsync(message, result);
         }
 
         [Command("cat")]
@@ -46,55 +48,34 @@ namespace MajorInteractiveBot.Modules
         [RequireCommandChannel]
         public async Task ShowCat()
         {
-            string location = await GetJsonAsync(CatPicture, "url");
-            await ShowPicture("cat", location);
+            // string location = await GetJsonAsync(CatPicture, "url");
+            // await ShowPicture("cat", location);
+
+            var message = await ReplyAsync("Searching for a cat...");
+            var result = await _imageService.FromJsonAsync(CatPicture, "url");
+
+            await ShowPictureAsync(message, result);
         }
 
-        private async Task<string> GetJsonAsync(string uri, string key)
+        private async Task ShowPictureAsync(IUserMessage message, ImageUrlResult result)
         {
-            string json = await GetAsync(uri);
-
-            var jArray = JArray.Parse(json);
-            var jToken = jArray.First;
-
-            return jToken.Value<string>(key);            
-        }
-
-        private async Task ShowPicture(string type, string uri)
-        {
-            var message = await ReplyAsync($"Searching for a {type}...");
-            try
+            if (result.IsSuccess)
             {
-                var imageEmbed = EmbedFromImage(uri);
+                var embed = new EmbedBuilder().WithUrl(result.Result);
 
                 await message.ModifyAsync(msg =>
                 {
                     msg.Content = "Found one!";
-                    msg.Embed = imageEmbed.Build();
+                    msg.Embed = embed.Build();
                 });
             }
-            catch (Exception ex)
+            else
             {
-                Log.LogCritical(ex, "Image lookup failed.");
+                await message.ModifyAsync(msg =>
+                {
+                    msg.Content = "Image lookup failed.";
+                });
             }
-        }
-
-        private async Task<string> GetAsync(string uri)
-        {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
-            request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-
-            using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                return await reader.ReadToEndAsync();
-            }
-        }
-
-        private EmbedBuilder EmbedFromImage(string imageUrl)
-        {
-            return new EmbedBuilder().WithImageUrl(imageUrl);
         }
     }
 }

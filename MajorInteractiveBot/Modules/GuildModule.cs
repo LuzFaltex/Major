@@ -458,7 +458,7 @@ namespace MajorInteractiveBot.Modules
                         {
                             IsInline = false,
                             Name = "Current Command Channels",
-                            Value = GetCommandChannels()
+                            Value = await GetCommandChannels()
                         }
                     },
                     Color = Color.Green

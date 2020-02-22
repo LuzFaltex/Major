@@ -14,6 +14,8 @@ using Serilog.Events;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Net.Http;
+using System.IO;
 
 namespace MajorInteractiveBot
 {
@@ -29,8 +31,8 @@ namespace MajorInteractiveBot
                 .ConfigureAppConfiguration((ctx, builder) =>
                 {
                     builder.AddEnvironmentVariables("MAJOR_");
-                    builder.AddJsonFile("appsettings.json");
-                    builder.AddJsonFile($"appsettings.{ctx.HostingEnvironment.EnvironmentName}.json", true);                    
+                    builder.AddJsonFile("appsettings.json", true);
+                    builder.AddJsonFile($"appsettings.{ctx.HostingEnvironment.EnvironmentName}.json", true);
 
                     Debug.WriteLine(ctx.HostingEnvironment.EnvironmentName);
 
@@ -43,9 +45,8 @@ namespace MajorInteractiveBot
                 {
                     var logMinimum = new Serilog.Core.LoggingLevelSwitch(ctx.HostingEnvironment.IsDevelopment() ? LogEventLevel.Debug : LogEventLevel.Information);
                     var seriLogger = new LoggerConfiguration()
-                        .MinimumLevel.ControlledBy(logMinimum)
-                        .WriteTo.Console()
-                        .WriteTo.RollingFile(@"logs\{date}", restrictedToMinimumLevel: LogEventLevel.Debug)
+                        .WriteTo.Console(levelSwitch: logMinimum)
+                        .WriteTo.RollingFile(Path.Combine("logs", "{Date}"), restrictedToMinimumLevel: LogEventLevel.Debug)
                         .CreateLogger();
 
                     builder.AddSerilog(seriLogger);
@@ -59,11 +60,13 @@ namespace MajorInteractiveBot
                             // options.UseSqlite(context.Configuration.GetValue<string>(nameof(MajorConfig.DbConnection)));
                             options.UseNpgsql(context.Configuration.GetConnectionString("MajorDb"));
                         })
+                        .AddMemoryCache()
                         .AddSingleton<DiscordSocketClient>()
                         .AddSingleton<CommandService>()
                         .AddSingleton<CommandHandler>()
                         .AddSingleton<InteractiveService>()
                         .AddSingleton<ICommandHelpService, CommandHelpService>()
+                        .AddSingleton<HttpClient>()
 
                         .AddHostedService<MajorBot>();
                 });
