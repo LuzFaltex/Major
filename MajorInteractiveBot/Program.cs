@@ -15,6 +15,7 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Net.Http;
+using System.IO;
 
 namespace MajorInteractiveBot
 {
@@ -44,9 +45,8 @@ namespace MajorInteractiveBot
                 {
                     var logMinimum = new Serilog.Core.LoggingLevelSwitch(ctx.HostingEnvironment.IsDevelopment() ? LogEventLevel.Debug : LogEventLevel.Information);
                     var seriLogger = new LoggerConfiguration()
-                        .MinimumLevel.ControlledBy(logMinimum)
-                        .WriteTo.Console()
-                        .WriteTo.RollingFile(@"logs\{date}", restrictedToMinimumLevel: LogEventLevel.Debug)
+                        .WriteTo.Console(levelSwitch: logMinimum)
+                        .WriteTo.RollingFile(Path.Combine("logs", "{Date}"), restrictedToMinimumLevel: LogEventLevel.Debug)
                         .CreateLogger();
 
                     builder.AddSerilog(seriLogger);
