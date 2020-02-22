@@ -14,6 +14,7 @@ using Serilog.Events;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace MajorInteractiveBot
 {
@@ -29,8 +30,8 @@ namespace MajorInteractiveBot
                 .ConfigureAppConfiguration((ctx, builder) =>
                 {
                     builder.AddEnvironmentVariables("MAJOR_");
-                    builder.AddJsonFile("appsettings.json");
-                    builder.AddJsonFile($"appsettings.{ctx.HostingEnvironment.EnvironmentName}.json", true);                    
+                    builder.AddJsonFile("appsettings.json", true);
+                    builder.AddJsonFile($"appsettings.{ctx.HostingEnvironment.EnvironmentName}.json", true);
 
                     Debug.WriteLine(ctx.HostingEnvironment.EnvironmentName);
 
@@ -59,11 +60,13 @@ namespace MajorInteractiveBot
                             // options.UseSqlite(context.Configuration.GetValue<string>(nameof(MajorConfig.DbConnection)));
                             options.UseNpgsql(context.Configuration.GetConnectionString("MajorDb"));
                         })
+                        .AddMemoryCache()
                         .AddSingleton<DiscordSocketClient>()
                         .AddSingleton<CommandService>()
                         .AddSingleton<CommandHandler>()
                         .AddSingleton<InteractiveService>()
                         .AddSingleton<ICommandHelpService, CommandHelpService>()
+                        .AddSingleton<HttpClient>()
 
                         .AddHostedService<MajorBot>();
                 });
